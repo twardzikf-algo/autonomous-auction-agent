@@ -1,0 +1,24 @@
+@startuml
+
+Auctioneer -> Bidder: StartAuction
+Bidder -> Auctioneer: Register
+Auctioneer -> Bidder: InitializeBidder
+
+loop more items
+
+	opt offer own items
+	Bidder -> Auctioneer: Offer
+	end
+
+	Auctioneer -> Bidder: CallForBids
+	Bidder -> Auctioneer: Bid
+	Auctioneer -> Bidder: InformBuy
+
+	opt offered own item
+	Auctioneer -> Bidder: InformSell
+	end
+end
+
+Auctioneer -> Bidder: EndAuction
+
+@enduml
