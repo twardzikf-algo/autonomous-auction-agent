@@ -3589,3 +3589,417 @@ Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm:
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:53:27,176 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 5783 mb of usable space - resetting to maximum available disk space: 5783 mb
+2018-07-01 23:53:28,294 ERROR [org.apache.activemq.broker.TransportConnector] - Could not accept connection : java.lang.InterruptedException
+2018-07-01 23:53:28,295 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316b1adc0648StandardJMSBroker#3-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316b1adc0648StandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:53:28,300 WARN [n-316b1adc0648.a-316b335bbeb1.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-316b1adc0648StandardJMSBroker#3) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1445)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316b1adc0648StandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:53:28,301 ERROR [n-316b1adc0648.IDirectory.jms.receiver] - Couldn't destroy consumer cause of 'org.apache.activemq.transport.TransportDisposedIOException: Transport disposed.'
+2018-07-01 23:53:28,302 WARN [n-316b1adc0648.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-316b1adc0648StandardJMSBroker#1) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doCleanup(DirectoryAgentNodeBean.java:311)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:1011)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316b1adc0648StandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:53:28,295 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316b1adc0648StandardJMSBroker#1-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316b1adc0648StandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:53:35,313 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 5783 mb of usable space - resetting to maximum available disk space: 5783 mb
+2018-07-01 23:53:35,515 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Agent 20_uniform started.
+2018-07-01 23:53:41,231 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 5783 mb of usable space - resetting to maximum available disk space: 5783 mb
+2018-07-01 23:53:42,671 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: STARTING
+2018-07-01 23:53:42,672 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:53:42,677 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending StartAuction() to group
+2018-07-01 23:53:42,694 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - StartAuction()
+2018-07-01 23:53:42,717 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Register(20_uniform)
+2018-07-01 23:53:44,676 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: REGISTRATION
+2018-07-01 23:53:44,677 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:53:44,698 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InitializeBidder(20_uniform, Wallet(bidderId=20_uniform, credits=1000, resources={J=5}, value=0), [C, Z, Y, C, C, C, M, W, C, X, Z, E, Y, M, C, W, Z, C, E, M, E, Z, C, C, W, D, C, Y, C, C, C, E, E, M, C, M, M, Z, E, C, M, Z, M, M, Y, M, D, W, M, W, W, E, D, Y, N, C, N, C, W, W, C, N, C, D, W, W, N, N, N, Y, Y, N, C, Y, N, Z, N, N, C, C, C, C, N, Z, W, E, Y, D, W, Q, N, N, D, N, Z, C, Q, Z, W, D]) to 20_uniform
+2018-07-01 23:53:44,722 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InitializeBidder(20_uniform, Wallet(bidderId=20_uniform, credits=1000, resources={J=5}, value=0), [C, Z, Y, C, C, C, M, W, C, X, Z, E, Y, M, C, W, Z, C, E, M, E, Z, C, C, W, D, C, Y, C, C, C, E, E, M, C, M, M, Z, E, C, M, Z, M, M, Y, M, D, W, M, W, W, E, D, Y, N, C, N, C, W, W, C, N, C, D, W, W, N, N, N, Y, Y, N, C, Y, N, Z, N, N, C, C, C, C, N, Z, W, E, Y, D, W, Q, N, N, D, N, Z, C, Q, Z, W, D])
+2018-07-01 23:53:44,723 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={J=5}, value=0)
+2018-07-01 23:53:46,682 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:53:46,682 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:53:46,684 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(1, C, 0) to group
+2018-07-01 23:53:46,696 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(1, C, 0)
+2018-07-01 23:53:46,697 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:53:46,698 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={J=5}, value=0)
+2018-07-01 23:53:46,708 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 1, 1)
+2018-07-01 23:53:48,687 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:53:48,688 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:53:48,688 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:53:48,689 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={J=5}, value=0)
+2018-07-01 23:53:48,691 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 1, 1)
+2018-07-01 23:53:48,692 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 1, C, 0) to 20_uniform
+2018-07-01 23:53:48,699 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 1, C, 0)
+2018-07-01 23:53:48,700 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won C for 0
+2018-07-01 23:53:48,700 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={C=1, J=5}, value=54)
+2018-07-01 23:53:50,690 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:53:50,690 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:53:50,691 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(2, Z, 0) to group
+2018-07-01 23:53:50,699 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(2, Z, 0)
+2018-07-01 23:53:50,699 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:53:50,701 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={C=1, J=5}, value=54)
+2018-07-01 23:53:50,706 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 2, 1)
+2018-07-01 23:53:52,693 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:53:52,694 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:53:52,696 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:53:52,696 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={C=1, J=5}, value=54)
+2018-07-01 23:53:52,696 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 2, 1)
+2018-07-01 23:53:52,697 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 2, Z, 0) to 20_uniform
+2018-07-01 23:53:52,702 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 2, Z, 0)
+2018-07-01 23:53:52,702 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won Z for 0
+2018-07-01 23:53:52,703 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Z=1, C=1, J=5}, value=54)
+2018-07-01 23:53:54,696 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:53:54,697 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:53:54,697 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(3, Y, 0) to group
+2018-07-01 23:53:54,702 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(3, Y, 0)
+2018-07-01 23:53:54,703 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:53:54,703 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Z=1, C=1, J=5}, value=54)
+2018-07-01 23:53:54,711 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 3, 1)
+2018-07-01 23:53:56,701 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:53:56,702 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:53:56,703 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:53:56,703 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Z=1, C=1, J=5}, value=54)
+2018-07-01 23:53:56,704 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 3, 1)
+2018-07-01 23:53:56,705 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 3, Y, 0) to 20_uniform
+2018-07-01 23:53:56,712 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 3, Y, 0)
+2018-07-01 23:53:56,713 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won Y for 0
+2018-07-01 23:53:56,713 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=1, J=5}, value=54)
+2018-07-01 23:53:58,702 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:53:58,702 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:53:58,702 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(4, C, 0) to group
+2018-07-01 23:53:58,705 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(4, C, 0)
+2018-07-01 23:53:58,706 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:53:58,706 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=1, J=5}, value=54)
+2018-07-01 23:53:58,714 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 4, 1)
+2018-07-01 23:54:00,704 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:00,705 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:54:00,706 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:00,706 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=1, J=5}, value=54)
+2018-07-01 23:54:00,707 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 4, 1)
+2018-07-01 23:54:00,708 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 4, C, 0) to 20_uniform
+2018-07-01 23:54:00,715 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 4, C, 0)
+2018-07-01 23:54:00,715 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won C for 0
+2018-07-01 23:54:00,716 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=2, J=5}, value=58)
+2018-07-01 23:54:02,706 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:02,707 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:02,707 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(5, C, 0) to group
+2018-07-01 23:54:02,715 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(5, C, 0)
+2018-07-01 23:54:02,716 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:54:02,716 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=2, J=5}, value=58)
+2018-07-01 23:54:02,723 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 5, 1)
+2018-07-01 23:54:04,713 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:04,715 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:54:04,716 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:04,716 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=2, J=5}, value=58)
+2018-07-01 23:54:04,717 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 5, 1)
+2018-07-01 23:54:04,717 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 5, C, 0) to 20_uniform
+2018-07-01 23:54:04,724 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 5, C, 0)
+2018-07-01 23:54:04,724 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won C for 0
+2018-07-01 23:54:04,724 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=3, J=5}, value=62)
+2018-07-01 23:54:06,722 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:06,723 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:06,723 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(6, C, 0) to group
+2018-07-01 23:54:06,729 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(6, C, 0)
+2018-07-01 23:54:06,733 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:54:06,734 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=3, J=5}, value=62)
+2018-07-01 23:54:06,747 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 6, 1)
+2018-07-01 23:54:08,723 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:08,725 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:54:08,726 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:08,726 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=3, J=5}, value=62)
+2018-07-01 23:54:08,727 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 6, 1)
+2018-07-01 23:54:08,727 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 6, C, 0) to 20_uniform
+2018-07-01 23:54:08,735 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - InformBuy(WON, 6, C, 0)
+2018-07-01 23:54:08,735 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Won C for 0
+2018-07-01 23:54:08,736 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, J=5}, value=66)
+2018-07-01 23:54:10,727 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:10,727 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:10,728 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(7, M, 0) to group
+2018-07-01 23:54:10,732 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - CallForBids(7, M, 0)
+2018-07-01 23:54:10,732 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - AUCTIONATOR: msgbox:n-316e67689b1d/a-316e821c8039
+2018-07-01 23:54:10,732 INFO [n-316d055f431f.a-316d20c02bed.BidderBean] - Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, J=5}, value=66)
+2018-07-01 23:54:10,740 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Received Bid(20_uniform, 7, 1)
+2018-07-01 23:54:12,556 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316d055f431fStandardJMSBroker#1-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316d055f431fStandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:12,558 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316d055f431fStandardJMSBroker#3-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316d055f431fStandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:12,566 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316d055f431fStandardJMSBroker#3-2'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316d055f431fStandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:12,569 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.1.14:50290 failed: java.io.EOFException
+2018-07-01 23:54:12,572 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: vm://n-316d055f431fStandardJMSBroker#4 failed: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316d055f431fStandardJMSBroker#4) stopped.
+2018-07-01 23:54:12,574 ERROR [org.apache.activemq.broker.TransportConnector] - Could not accept connection : java.lang.InterruptedException
+2018-07-01 23:54:12,727 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:12,728 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 1
+2018-07-01 23:54:12,729 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:12,729 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, J=5}, value=66)
+2018-07-01 23:54:12,730 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Bid(20_uniform, 7, 1)
+2018-07-01 23:54:12,730 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending InformBuy(WON, 7, M, 0) to 20_uniform
+2018-07-01 23:54:13,594 WARN [n-316d055f431f.a-316d20c02bed.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-316d055f431fStandardJMSBroker#3) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1445)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316d055f431fStandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:13,595 WARN [n-316d055f431f.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-316d055f431fStandardJMSBroker#1) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doCleanup(DirectoryAgentNodeBean.java:311)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:1011)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316d055f431fStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:14,729 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:14,729 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:14,729 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(8, W, 0) to group
+2018-07-01 23:54:16,732 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:16,732 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:16,733 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:16,733 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, M=1, J=5}, value=66)
+2018-07-01 23:54:18,734 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:18,734 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:18,734 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(9, C, 0) to group
+2018-07-01 23:54:20,736 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:20,737 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:20,738 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:20,738 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, M=1, J=5}, value=66)
+2018-07-01 23:54:22,742 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: BIDDING
+2018-07-01 23:54:22,742 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:22,742 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Sending CallForBids(10, X, 0) to group
+2018-07-01 23:54:24,742 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-01 23:54:24,743 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Messages in Memory: 0
+2018-07-01 23:54:24,743 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - Evaluating bids
+2018-07-01 23:54:24,743 INFO [n-316e67689b1d.a-316e821c8039.AuctioneerBean] - 20_uniform=Wallet(bidderId=20_uniform, credits=1000, resources={Y=1, Z=1, C=4, M=1, J=5}, value=66)
+2018-07-01 23:54:24,981 ERROR [org.apache.activemq.broker.TransportConnector] - Could not accept connection : java.lang.InterruptedException
+2018-07-01 23:54:24,984 ERROR [n-316e67689b1d.IDirectory.jms] - Sending of Message to address 'group:df@dfgroup' through JMS failed!
+javax.jms.JMSException: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:24,984 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-316e67689b1dStandardJMSBroker#1-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-316e67689b1dStandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:24,990 ERROR [n-316e67689b1d.IDirectory] - sendMessage failed. Message:
+[Headers: {JiacTNGSenderAddress=>msgbox:df@n-316e67689b1d;JiacTNGProtocolID=>df:bye;JiacTNGGroupAddress=>df@dfgroup;UUID=>n-316e67689b1d}, Payload: null, Sender: msgbox:df@n-316e67689b1d]
+de.dailab.jiactng.agentcore.comm.CommunicationException: error while sending message
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:221)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: javax.jms.JMSException: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	... 7 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:24,992 WARN [n-316e67689b1d.a-316e821c8039.CommunicationBean.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-316e67689b1dStandardJMSBroker#3) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316e67689b1dStandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-01 23:54:25,000 WARN [n-316e67689b1d.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doCleanup(DirectoryAgentNodeBean.java:311)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:1011)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-316e67689b1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)

@@ -19,9 +19,30 @@ import de.dailab.jiactng.agentcore.ontology.IActionDescription;
 
 import java.util.List;
 
-/**
- * TODO Implement this class.
- */
+/******************* PRODUCT BACKLOG *************************
+ *
+ * DONE:
+ *  - requested Initialization. MessageObserver
+ *  - Message handling (rather fully functional)
+ *  - keeping track of resources and credits in the wallet
+ *  - functionality to send an offer of resale of a resource
+ *    and correctly handle a response for such request
+ *  - Calculator class encapsuling the actual bid calculating functionality
+ *  - impementation of specific tactics/techniques happens in prepared method stubs
+ *  - Technique/Tactic will be chosen based on bidderId,
+ *    e. g. uniform distribution will be used for bidder id 20_uniform
+ *
+ * TODO:
+ *  - implement specific tactics
+ *  - think, where should the resaling functionality be integrated
+ *    and when/what should we resell (sounds like part of each specific tactic)
+ *  - think, if we may need to extract and store some additional facts/knowledge for
+ *    further use by specific tactics, like e.g. what did we lost and how high was the bid
+ *    or which offers of resale were bought with high price, which not
+ *    Dunno, if it is needed/important, just had a random thought about it
+ *
+ *************************************************************/
+
 public class BidderBean extends AbstractAgentBean {
 
     /***********************
@@ -32,6 +53,8 @@ public class BidderBean extends AbstractAgentBean {
 
 	private Wallet wallet;
     private List<Resource> stack;
+
+    private ICommunicationAddress auctioneer;
 
     /***********************
      * GETTERS & SETTERS
@@ -112,7 +135,8 @@ public class BidderBean extends AbstractAgentBean {
      ****************************/
 
     private void handleStartAuction(JiacMessage message) {
-        send( new Register(bidderId), message.getSender() );
+        auctioneer = message.getSender();
+        send( new Register(bidderId), auctioneer );
     }
 
     private void handleInitializeBidder(JiacMessage message) {
@@ -125,7 +149,7 @@ public class BidderBean extends AbstractAgentBean {
         Integer minOffer = ((CallForBids) message.getPayload()).getMinOffer();
         Calculator calculator = new Calculator(bidderId, resource, minOffer, stack);
         Integer myOffer = calculator.estimateOffer();
-        send( new Bid( bidderId, ((CallForBids) message.getPayload()).getCallId(), myOffer),  message.getSender() );
+        send( new Bid( bidderId, ((CallForBids) message.getPayload()).getCallId(), myOffer),  auctioneer );
     }
 
     private void handleInformBuy(JiacMessage message) {
@@ -138,7 +162,17 @@ public class BidderBean extends AbstractAgentBean {
     }
 
     private void handleInformSell(JiacMessage message) {
-
+        InformSell payload = (InformSell) message.getPayload();
+        if(payload.getType()== InformSell.SellType.SOLD) {
+            wallet.add(payload.getResource(), -1);
+            wallet.updateCredits(payload.getPrice()-payload.getCharge());
+        }
+        else if(payload.getType()==InformSell.SellType.NOT_SOLD) {
+            wallet.updateCredits(-payload.getCharge());
+        }
+        else {
+            log.error("Resale offer was invalid!");
+        }
     }
 
     private void handleEndAuction(JiacMessage message) {
@@ -146,9 +180,18 @@ public class BidderBean extends AbstractAgentBean {
         if(payload.getWinner()==bidderId) log.info("I WON THE AUCTION!!!!!");
     }
 
-    /****************************
+    /******************************
+     * HANDLER FOR SENDING AN OFFER
+     ******************************/
+    private void offerResale(Resource resource, Integer price) {
+        Offer offer = new Offer(bidderId, resource, price);
+        log.info(offer.toString());
+        send(offer, auctioneer );
+    }
+
+    /******************************
      * CLASS FOR BID CALCULATIONS
-     ****************************/
+     ******************************/
 
     private class  Calculator {
 
