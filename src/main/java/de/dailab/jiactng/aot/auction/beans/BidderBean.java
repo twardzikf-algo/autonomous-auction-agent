@@ -113,7 +113,7 @@ public class BidderBean extends AbstractAgentBean {
                 if( payload instanceof InformSell ) handleInformSell(message);
                 if( payload instanceof EndAuction ) handleEndAuction(message);
 
-                log.info(wallet.toString());
+                if(wallet!=null) log.info(wallet.toString());
 
                 memory.remove(message);
             }
@@ -148,8 +148,11 @@ public class BidderBean extends AbstractAgentBean {
         Resource resource = ((CallForBids) message.getPayload()).getResource();
         Integer minOffer = ((CallForBids) message.getPayload()).getMinOffer();
         Calculator calculator = new Calculator(bidderId, resource, minOffer, stack);
+        calculator.printStack();
         Integer myOffer = calculator.estimateOffer();
-        send( new Bid( bidderId, ((CallForBids) message.getPayload()).getCallId(), myOffer),  auctioneer );
+        if(myOffer <= wallet.getCredits()) {
+            send(new Bid(bidderId, ((CallForBids) message.getPayload()).getCallId(), myOffer), auctioneer);
+        }
     }
 
     private void handleInformBuy(JiacMessage message) {
@@ -159,6 +162,7 @@ public class BidderBean extends AbstractAgentBean {
             wallet.updateCredits(-payload.getPrice());
             wallet.add(payload.getResource(), 1);
         }
+        stack.remove(0);
     }
 
     private void handleInformSell(JiacMessage message) {
@@ -243,6 +247,11 @@ public class BidderBean extends AbstractAgentBean {
         private Integer maxEnd() {
             //TODO
             return 4;
+        }
+
+        private void printStack() {
+            for( Resource s : stack) System.out.print(s+" ");
+            System.out.println();
         }
 
     }
