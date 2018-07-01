@@ -22,7 +22,7 @@
 				<bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.BidderBean" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					
-					<property name="bidderId" value="FirstDummyAgent" />
+					<property name="bidderId" value="20_uniform" />
 					<property name="messageGroup" value="test-group" />
 					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
 				</bean>
