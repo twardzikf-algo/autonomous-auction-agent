@@ -1,9 +1,12 @@
 package de.dailab.jiactng.aot.auction.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.HashMap;
 
 import de.dailab.jiactng.agentcore.AbstractAgentBean;
-
 import de.dailab.jiactng.agentcore.comm.CommunicationAddressFactory;
 import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.IGroupAddress;
@@ -17,10 +20,7 @@ import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.IActionDescription;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.HashMap;
+
 
 /******************* PRODUCT BACKLOG *************************
  *
@@ -34,72 +34,59 @@ import java.util.HashMap;
  *  - impementation of specific tactics/techniques happens in prepared method stubs
  *  - Technique/Tactic will be chosen based on bidderId,
  *    e. g. uniform distribution will be used for bidder id 20_uniform
+ *  - rebuild the design of Calculator, including HIstory and BuyFact classes,
+ *    there is a lot of redundancy there and
+ *
+ * IN PROGRESS:
+ *  - implementing max end and max profit strategies
+ *
  *
  * TODO:
  *  - implement specific tactics
  *  - think, where should the resaling functionality be integrated
  *    and when/what should we resell (sounds like part of each specific tactic)
- *  - think, if we may need to extract and store some additional facts/knowledge for
- *    further use by specific tactics, like e.g. what did we lost and how high was the bid
- *    or which offers of resale were bought with high price, which not
- *    Dunno, if it is needed/important, just had a random thought about it
  *
  *************************************************************/
 
 public class BidderBean extends AbstractAgentBean {
 
-    /***********************
+    /***************
      * ATTRIBUTES
-     ***********************/
-	private String bidderId;
-	private String messageGroup;
+     ***************/
+    private String bidderId;
+    private String messageGroup;
     private ICommunicationAddress auctioneer;
+    private Brain brain;
 
-	private Wallet wallet;
-    private List<Resource> currentStack;
-    private List<Resource> initialStack;
-    private History history = new History();
-
-    /***********************
+    /*********************
      * GETTERS & SETTERS
-     ***********************/
+     *********************/
+    public void setBidderId(String bidderId) {
+        this.bidderId = bidderId;
+    }
+    public void setMessageGroup(String messageGroup) {
+        this.messageGroup = messageGroup;
+    }
 
-	public String getBidderId() {
-		return this.bidderId;
-	}
-
-	public String getMessageGroup() {
-		return this.messageGroup;
-	}
-
-	public void setBidderId(String bidderId) {
-		this.bidderId = bidderId;
-	}
-
-	public void setMessageGroup(String messageGroup) {
-		this.messageGroup = messageGroup;
-	}
-
-    /***********************
+    /*********************
      * INITIALIZE AGENT
-     ***********************/
+     *********************/
 
-	@Override
+    @Override
     public void doStart() throws Exception {
         IGroupAddress group = CommunicationAddressFactory.createGroupAddress("test-group");
         IActionDescription joinAction = retrieveAction(ICommunicationBean.ACTION_JOIN_GROUP);
-        invoke( joinAction, new Serializable[] {group});
+        invoke(joinAction, new Serializable[]{group});
         this.memory.attach(new MessageObserver(), new JiacMessage());
-        log.info( "Agent "+bidderId+" started.");
+        log.info("Agent " + bidderId + " started.");
     }
 
-    /***********************
+    /*********************
      * MESSAGE OBSERVER
-     ***********************/
+     *********************/
 
     @SuppressWarnings("serial")
     class MessageObserver implements SpaceObserver<IFact> {
-        @SuppressWarnings("rawtypes")
         @Override
         public void notify(SpaceEvent<? extends IFact> event) {
 
@@ -110,14 +97,14 @@ public class BidderBean extends AbstractAgentBean {
 
                 log.info(payload.toString());
 
-                if( payload instanceof StartAuction) handleStartAuction(message);
-                if( payload instanceof CallForBids ) handleCallForBids(message);
-                if( payload instanceof InitializeBidder ) handleInitializeBidder(message);
-                if( payload instanceof InformBuy ) handleInformBuy(message);
-                if( payload instanceof InformSell ) handleInformSell(message);
-                if( payload instanceof EndAuction ) handleEndAuction(message);
+                if (payload instanceof StartAuction) handleStartAuction(message);
+                if (payload instanceof CallForBids) handleCallForBids(message);
+                if (payload instanceof InitializeBidder) handleInitializeBidder(message);
+                if (payload instanceof InformBuy) handleInformBuy(message);
+                if (payload instanceof InformSell) handleInformSell(message);
+                if (payload instanceof EndAuction) handleEndAuction(message);
 
-                if(wallet!=null) log.info(wallet.toString());
+                if (brain != null) log.info(brain.getWallet().toString());
 
                 memory.remove(message);
             }
@@ -140,59 +127,46 @@ public class BidderBean extends AbstractAgentBean {
 
     private void handleStartAuction(JiacMessage message) {
         auctioneer = message.getSender();
-        send( new Register(bidderId), auctioneer );
+        send(new Register(bidderId), auctioneer);
     }
 
     private void handleInitializeBidder(JiacMessage message) {
-        this.wallet = ((InitializeBidder) message.getPayload()).getWallet();
-        this.currentStack = ((InitializeBidder) message.getPayload()).getItems();
-        this.initialStack = ((InitializeBidder) message.getPayload()).getItems();
+        Wallet wallet = ((InitializeBidder) message.getPayload()).getWallet();
+        List<Resource> stack = ((InitializeBidder) message.getPayload()).getItems();
+        brain = new Brain(bidderId, wallet, stack);
     }
 
     private void handleCallForBids(JiacMessage message) {
-        Resource resource = ((CallForBids) message.getPayload()).getResource();
-        Integer minOffer = ((CallForBids) message.getPayload()).getMinOffer();
-        Integer callId = ((CallForBids) message.getPayload()).getCallId();
-        Calculator calculator = new Calculator(bidderId, callId, resource, minOffer, currentStack, initialStack, history);
-        //calculator.printStack();
-        Integer myPrice = calculator.estimateOffer();
-
-        if(myPrice <= wallet.getCredits()) {
-            history.add(resource, myPrice, null, null);
-            send(new Bid(bidderId, ((CallForBids) message.getPayload()).getCallId(), myPrice), auctioneer);
-        }
+        CallForBids payload = ((CallForBids) message.getPayload());
+        brain.newCall(payload.getCallId(), payload.getResource(), payload.getMinOffer());
+        int offer = brain.bid();
+        brain.addClosed(payload.getResource(), offer);
+        send(new Bid(bidderId, payload.getCallId(), offer), auctioneer);
     }
 
     private void handleInformBuy(JiacMessage message) {
         InformBuy payload = (InformBuy) message.getPayload();
-        currentStack.remove(0);
-        history.get().setSoldPrice(payload.getPrice());
-        if(payload.getType() == InformBuy.BuyType.WON) {
-            history.get().setWon(Boolean.TRUE);
-            log.info("Won "+payload.getResource().toString()+" for "+payload.getPrice());
-            wallet.updateCredits(-payload.getPrice());
-            wallet.add(payload.getResource(), 1);
+        brain.removeOpen();
+        brain.updateClosed(payload.getPrice(), (payload.getType() == InformBuy.BuyType.WON));
+        if (payload.getType() == InformBuy.BuyType.WON) {
+            brain.updateWallet(-payload.getPrice());
+            brain.updateWallet(payload.getResource(), 1);
         }
-        else history.get().setWon(Boolean.FALSE);
     }
 
     private void handleInformSell(JiacMessage message) {
         InformSell payload = (InformSell) message.getPayload();
-        if(payload.getType()== InformSell.SellType.SOLD) {
-            wallet.add(payload.getResource(), -1);
-            wallet.updateCredits(payload.getPrice()-payload.getCharge());
-        }
-        else if(payload.getType()==InformSell.SellType.NOT_SOLD) {
-            wallet.updateCredits(-payload.getCharge());
-        }
-        else {
-            log.error("Resale offer was invalid!");
-        }
+        if (payload.getType() == InformSell.SellType.SOLD) {
+            brain.updateWallet(payload.getResource(), -1);
+            brain.updateWallet(payload.getPrice() - payload.getCharge());
+        } else if (payload.getType() == InformSell.SellType.NOT_SOLD) {
+            brain.updateWallet(-payload.getCharge());
+        } else log.error("Resale offer was invalid!");
     }
 
     private void handleEndAuction(JiacMessage message) {
         EndAuction payload = (EndAuction) message.getPayload();
-        if(payload.getWinner().equals(bidderId)) log.info("I WON THE AUCTION!!!!!");
+        if (payload.getWinner().equals(bidderId)) log.info("I WON THE AUCTION!!!!!");
         else log.info("I LOST THE AUCTION!!!!!");
     }
 
@@ -202,50 +176,87 @@ public class BidderBean extends AbstractAgentBean {
     private void offerResale(Resource resource, Integer price) {
         Offer offer = new Offer(bidderId, resource, price);
         log.info(offer.toString());
-        send(offer, auctioneer );
+        send(offer, auctioneer);
     }
 
     /******************************
-     * CLASS FOR BID CALCULATIONS
+     * BRAIN:
+     * - stores and controlles the wallet
+     * - stores and controlles lists of open and clossed calls
+     * - handles offer calculation
      ******************************/
 
-    private class  Calculator {
+    private class Brain {
 
-        /**************************************************************************************
-         * ATTENTION!
-         * it works, but design is of rather poor quality in my opinion, i should use wallet for parts of information isntead of
-         * filtering stacks over and over, will try to think of something better and rebuild it
-         *************************************************************************************/
-        private String bidderId; // to choose proper method based on agent's name
-        private Integer callId; // which round is it - looks like curently not needed too
-        private Integer minOffer; // reservation price, in our case it should be always 0,so probably not needed
-        Resource resource; //resource being bidded
-        private List<Resource> currentStack; // gets smaller each time an item is sold
-        private List<Resource> initialStack; // unmodified stack from the beginning of auction
-        private History history;
+        /* static attributes - remain fixed for whole auction*/
+        private String bidderId;
+        private Wallet wallet;
+        private OpenStack initial;
 
-        public Calculator(String bidderId, Integer callId, Resource resource , Integer minOffer, List<Resource> currentStack,  List<Resource> initialStack, History history) {
+        /* variable attributes - updated at the start of each call */
+        private Integer callId;
+        private Resource resource;
+        private Integer minOffer;
+
+        /* variable attributes - updated at the end of each call */
+        private OpenStack open;
+        private ClosedStack closed;
+
+        public Brain(String bidderId, Wallet wallet, List<Resource> stack) {
             this.bidderId = bidderId;
+            this.wallet = wallet;
+            this.initial = new OpenStack(stack);
+            this.open = new OpenStack(stack);
+            this.closed = new ClosedStack();
+        }
+
+        public void newCall(Integer callId, Resource resource, Integer minOffer) {
+            this.callId = callId;
             this.resource = resource;
             this.minOffer = minOffer;
-            this.currentStack = currentStack;
-            this.initialStack = initialStack;
-            this.history = history;
+        }
+
+        public void addClosed(Resource resource, Integer myPrice) {
+            closed.add(resource, myPrice, null, null);
+        }
+
+        public void updateClosed(Integer soldPrice, Boolean won) {
+            closed.get(0).setSoldPrice(soldPrice);
+            closed.get(0).setWon(won);
+        }
+
+        public void removeOpen() {
+            open.remove();
+        }
+
+        public Wallet getWallet() {
+            return wallet;
+        }
+
+        public void updateWallet(Integer credits) {
+            wallet.updateCredits(credits);
+        }
+
+        public void updateWallet(Resource resource, Integer amount) {
+            wallet.add(resource, amount);
         }
 
         /************************************************
          * CHOOSE METHOD BASED ON AGENT NAME (bidder.xml)
          ************************************************/
 
-        public Integer estimateOffer() {
+        public int bid() {
+            int offer;
             switch(bidderId) {
-                case "20_uniform": return uniformDistribution();
-                case "20_avgBid": return avgBid();
-                case "20_maxProfit": return maxProfit();
-                case "20_maxEnd": return maxEnd();
-                default: return  uniformDistribution();
+                case "20_uniform": offer = uniformDistribution();
+                case "20_avgBid": offer = avgBid();
+                case "20_maxProfit": offer = maxProfit();
+                case "20_maxEnd": offer = maxEnd();
+                default: offer = uniformDistribution();
             }
+            return (offer <= wallet.getCredits()) ? offer : minOffer;
         }
+
 
         /************************************
          * SPECIFIC BID CALCULATING METHODS
@@ -261,42 +272,42 @@ public class BidderBean extends AbstractAgentBean {
             return 25;
         }
 
-        private Integer maxProfit() {
-            switch(resource) {
+        private Integer maxProfit() { // MORE OR LESS DONE
+            switch (resource) {
                 case C: //DONE
-                    if( history.filterByResource(Resource.C).filterByWon(Boolean.TRUE).size()==0 ) return 28;
+                    if (closed.getByResource(Resource.C).getByWon(Boolean.TRUE).countAll() == 0) return 28;
                     else return 4;
                 case D: //DONE
-                    int allD = initialStack.stream().filter(p -> p == Resource.D).collect(Collectors.toList()).size();
-                    return  fib(allD)/2 +1;
+                    int allD = initial.getAll().stream().filter(p -> p == Resource.D).collect(Collectors.toList()).size();
+                    return fib(allD) / 2 + 1;
                 case E: //DONE
                     return 0;
                 case J: //DONE
                 case K:
                     HashMap<Resource, Integer> map = new HashMap<>();
-                    map.put(Resource.J, history.filterByResource(Resource.J).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.K, history.filterByResource(Resource.K).filterByWon(Boolean.TRUE).size());
-                    int min = Math.min(map.get(Resource.J),map.get(Resource.K));
-                    if(map.get(resource)==min) return 20;
+                    map.put(Resource.J, closed.getByResource(Resource.J).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.K, closed.getByResource(Resource.K).getByWon(Boolean.TRUE).countAll());
+                    int min = Math.min(map.get(Resource.J), map.get(Resource.K));
+                    if (map.get(resource) == min) return 20;
                     else return 0;
                 case M: //DONE
                     return 13;
                 case N:
-                    int currentM = history.filterByResource(Resource.M).filterByWon(Boolean.TRUE).size();
-                    int currentN = history.filterByResource(Resource.N).filterByWon(Boolean.TRUE).size();
-                    if(currentM>currentN) return 7;
+                    int currentM = closed.getByResource(Resource.M).getByWon(Boolean.TRUE).countAll();
+                    int currentN = closed.getByResource(Resource.N).getByWon(Boolean.TRUE).countAll();
+                    if (currentM > currentN) return 7;
                     else return 0;
                 case W: //DONE
                 case X:
                 case Y:
                 case Z:
                     map = new HashMap<>();
-                    map.put(Resource.W, history.filterByResource(Resource.W).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.X, history.filterByResource(Resource.X).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.Y, history.filterByResource(Resource.Y).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.Z, history.filterByResource(Resource.Z).filterByWon(Boolean.TRUE).size());
-                    min =  Math.min(Math.min(map.get(Resource.W),map.get(Resource.X)),Math.min(map.get(Resource.Y),map.get(Resource.Z)));
-                    if(map.get(resource)==min) return 35;
+                    map.put(Resource.W, closed.getByResource(Resource.W).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.X, closed.getByResource(Resource.X).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.Y, closed.getByResource(Resource.Y).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.Z, closed.getByResource(Resource.Z).getByWon(Boolean.TRUE).countAll());
+                    min = Math.min(Math.min(map.get(Resource.W), map.get(Resource.X)), Math.min(map.get(Resource.Y), map.get(Resource.Z)));
+                    if (map.get(resource) == min) return 35;
                     else return 15;
                 case Q: //DONE
                     return 5;
@@ -305,58 +316,55 @@ public class BidderBean extends AbstractAgentBean {
             return 0;
         }
 
-        private Integer maxEnd() {
+        private Integer maxEnd() { // IN PROGRESS , SEMI FUNCTIONAL BUT NOT VERY EFFECTIVE
 
-            switch(resource) {
+            switch (resource) {
                 case C: //DONE
-                    int allC = initialStack.stream().filter(p -> p == Resource.C).collect(Collectors.toList()).size();
-                    int notSoldC = currentStack.stream().filter(p -> p == Resource.C).collect(Collectors.toList()).size();
-                    if(  notSoldC > 0.5*allC  ) return 0; //first half of C - dont buy them
+                    int allC = initial.getAll().stream().filter(p -> p == Resource.C).collect(Collectors.toList()).size();
+                    int notSoldC = open.getAll().stream().filter(p -> p == Resource.C).collect(Collectors.toList()).size();
+                    if (notSoldC > 0.5 * allC) return 0; //first half of C - dont buy them
                     else {
                         //bis du eins bekommst!
-                        if( history.filterByResource(Resource.C).filterByWon(Boolean.TRUE).size()==0 ) return 51;
+                        if (closed.getByResource(Resource.C).getByWon(Boolean.TRUE).countAll() == 0) return 51;
                         else return 0;
                     }
                 case D: //TODO
                     break;
                 case E: //DONE
-                    if( history.filterByResource(Resource.E).filterByWon(Boolean.TRUE).size()<2 ) return 5;
+                    if (closed.getByResource(Resource.E).getByWon(Boolean.TRUE).countAll() < 2) return 5;
                     else return 6;
                 case J: //TODO
                 case K:
                     break;
                 case M: //DONE
-                    if( initialStack.size()/2 < currentStack.size()) { //first half
+                    if (initial.countAll() / 2 < open.countAll()) { //first half
                         return 12;
                     }
                     return 15;
                 case N: //DONE
                     HashMap<Resource, Integer> map = new HashMap<>();
-                    map.put(Resource.M, history.filterByResource(Resource.M).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.N, history.filterByResource(Resource.N).filterByWon(Boolean.TRUE).size());
-                    if(map.get(Resource.N) < map.get(Resource.M)) return 15;
+                    map.put(Resource.M, closed.getByResource(Resource.M).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.N, closed.getByResource(Resource.N).getByWon(Boolean.TRUE).countAll());
+                    if (map.get(Resource.N) < map.get(Resource.M)) return 15;
                     else return 0;
                 case W: //DONE
                 case X:
                 case Y:
                 case Z:
                     map = new HashMap<>();
-                    map.put(Resource.W, history.filterByResource(Resource.W).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.X, history.filterByResource(Resource.X).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.Y, history.filterByResource(Resource.Y).filterByWon(Boolean.TRUE).size());
-                    map.put(Resource.Z, history.filterByResource(Resource.Z).filterByWon(Boolean.TRUE).size());
-                    int min =  Math.min(Math.min(map.get(Resource.W),map.get(Resource.X)),Math.min(map.get(Resource.Y),map.get(Resource.Z)));
-                    if(map.get(resource)==min) return 30;
+                    map.put(Resource.W, closed.getByResource(Resource.W).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.X, closed.getByResource(Resource.X).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.Y, closed.getByResource(Resource.Y).getByWon(Boolean.TRUE).countAll());
+                    map.put(Resource.Z, closed.getByResource(Resource.Z).getByWon(Boolean.TRUE).countAll());
+                    int min = Math.min(Math.min(map.get(Resource.W), map.get(Resource.X)), Math.min(map.get(Resource.Y), map.get(Resource.Z)));
+                    if (map.get(resource) == min) return 30;
                     else return 21;
-                case Q: //DONE
+                case Q: //TODO
                     break;
             }
 
             return 0;
         }
-
-
-
 
         /************************************
          * HELPER & DEBUG METHODS
@@ -371,76 +379,127 @@ public class BidderBean extends AbstractAgentBean {
             return a;
         }
 
-        private void printStack() {
-            for( Resource s : currentStack) System.out.print(s+" ");
-            System.out.println();
-        }
-
-        public String toString() {
-            return "Calculator(bidderId="+bidderId+";resource="+resource+";minOffer="+minOffer+")";
-        }
 
     }
 
-    /******************************
-     * CLASS FOR STORING HISTORY
-     ******************************/
+    /**************************************************************
+     * OPENSTACK:
+     * - stores resources that are yet to be bidded on in a list
+     * - allows getting particular Elements from the list,
+     *   removing from the top (sold Resources)
+     * - also allows basic filtering functions
+     **************************************************************/
+    private class OpenStack {
+        private List<Resource> items;
 
-    private class History {
-        private List<BuyFact> history;
-
-        public History() {
-            this. history = new ArrayList<>();
-        }
-        public History(List<BuyFact> history) {
-            this. history = history;
-        }
-
-        /**************************************************
-         * ADD AND RETRIEVE TO AND FROM THE TOP OF HISTORY
-         **************************************************/
-        public List<BuyFact> getAll() {
-            return this.history;
+        public OpenStack(List<Resource> items) {
+            this.items = items;
         }
 
-        public void add(Resource resource, Integer myPrice, Integer soldPrice, Boolean won ) {
-            this.history.add(0, new BuyFact(resource, myPrice, soldPrice, won));
-        }
-        public BuyFact get() {
-            return this.history.get(0);
-        }
-        public BuyFact get(int i) {
-            return this.history.get(i);
+        public void remove() {
+            items.remove(0);
         }
 
-        public int size() {
-            return this.history.size();
+        public Resource get() {
+            return items.get(0);
         }
 
-        /*************************************
-         * FILTER HISTORY BY DIFFRENT CRITERIA
-         *************************************/
-
-        public History filterByResource(Resource resource) {
-            return new History( history.stream().filter(p -> p.getResource() == resource).collect(Collectors.toList()) );
+        public Resource get(int i) {
+            return items.get(i);
         }
 
-        public History filterByWon(Boolean won) {
-            return new History( history.stream().filter(p -> p.getWon() == won).collect(Collectors.toList()) );
+        public List<Resource> getAll() {
+            return this.items;
         }
 
+        public int countAll() {
+            return this.items.size();
+        }
 
+        public List<Resource> getByResource(Resource resource) {
+            return items.stream().filter(p -> p == resource).collect(Collectors.toList());
+        }
 
-        private class BuyFact {
+        public int countByResource(Resource resource) {
+            return items.stream().filter(p -> p == resource).collect(Collectors.toList()).size();
+        }
+
+        public String toString() {
+            return "OpenStack(items=" + items + ")";
+        }
+    }
+
+    /*******************************************************
+     * CLOSEDSTACK:
+     * - stores items that are already sold in a list
+     *   as ClosedItem objects
+     * - allows getting particular Elements from the list,
+     *   adding to the top (newly sold Resources)
+     * - also allows basic filtering functions
+     *******************************************************/
+
+    private class ClosedStack {
+        private List<ClosedItem> items;
+
+        public ClosedStack() {
+            this.items = new ArrayList<>();
+        }
+
+        public ClosedStack(List<ClosedItem> items) {
+            this.items = items;
+        }
+
+        public void add(Resource resource, Integer myPrice, Integer soldPrice, Boolean won) {
+            items.add(0, new ClosedItem(resource, myPrice, soldPrice, won));
+        }
+
+        public ClosedItem get() {
+            return items.get(0);
+        }
+
+        public ClosedItem get(int i) {
+            return items.get(i);
+        }
+
+        public List<ClosedItem> getAll() {
+            return this.items;
+        }
+
+        public int countAll() {
+            return this.items.size();
+        }
+
+        public ClosedStack getByResource(Resource resource) {
+            return new ClosedStack(items.stream().filter(p -> p.getResource() == resource).collect(Collectors.toList()));
+        }
+
+        public ClosedStack getByWon(Boolean won) {
+            return new ClosedStack(items.stream().filter(p -> p.getWon() == won).collect(Collectors.toList()));
+        }
+
+        public String toString() {
+            return items.stream().map(Object::toString).collect(Collectors.joining(",\n"));
+        }
+
+        /*************************************************************
+         * CLOSEDITEM:
+         * - single Element of "history" of calls
+         * - stores Resource, Price that our agent bidded on him
+         *   price, for which was it sold and if we won this resource
+         * - also provides standard getters/setters
+         *************************************************************/
+
+        private class ClosedItem {
 
             private Resource resource;
             private Integer myPrice;
             private Integer soldPrice;
             private Boolean won;
 
-            public BuyFact(Resource resource, Integer myPrice, Integer soldPrice, Boolean won) {
+            public ClosedItem(Resource resource, Integer myPrice, Integer soldPrice, Boolean won) {
                 this.resource = resource;
                 this.myPrice = myPrice;
+                this.soldPrice = soldPrice;
                 this.won = won;
             }
 
@@ -476,13 +535,22 @@ public class BidderBean extends AbstractAgentBean {
                 this.won = won;
             }
 
+            public String toString() {
+                return "ClosedItem(resource=" + resource + ";myPrice=" + myPrice + ";soldPrice=" + soldPrice + ";won=" + won + ")";
+            }
         }
-
-
     }
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
