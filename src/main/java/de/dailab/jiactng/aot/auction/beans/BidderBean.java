@@ -2,6 +2,7 @@ package de.dailab.jiactng.aot.auction.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import de.dailab.jiactng.agentcore.comm.CommunicationAddressFactory;
 import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.IGroupAddress;
 import de.dailab.jiactng.aot.auction.onto.*;
+import org.chocosolver.solver.*;
+import org.chocosolver.solver.variables.IntVar;
 import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
@@ -20,6 +23,7 @@ import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.IActionDescription;
 
+import static de.dailab.jiactng.aot.auction.onto.Resource.*;
 
 
 /******************* PRODUCT BACKLOG *************************
@@ -252,6 +256,7 @@ public class BidderBean extends AbstractAgentBean {
                 case "20_avgBid": offer = avgBid();
                 case "20_maxProfit": offer = maxProfit();
                 case "20_maxEnd": offer = maxEnd();
+                case "20_OptimProfit": offer = optimizedProfit();
                 default: offer = uniformDistribution();
             }
             return (offer <= wallet.getCredits()) ? offer : minOffer;
@@ -364,6 +369,113 @@ public class BidderBean extends AbstractAgentBean {
             }
 
             return 0;
+        }
+
+        public int[] findBestPrices(int money, ArrayList<Integer> openitems) {
+            Model model = new Model("Find good prices");
+            // create array of goods
+            ArrayList<IntVar> num_goods = new ArrayList<>(Arrays.asList(model.intVarArray("num", 7, 0, 1000, true)));
+
+            // create array of squared goods
+            ArrayList<IntVar> num_goods_squared = new ArrayList<>(Arrays.asList(model.intVarArray("num_squared", 7, 0, 1000000, true)));
+            for (int i = 0; i < num_goods.size(); i++) {
+                model.times(num_goods.get(i), num_goods.get(i), num_goods_squared.get(i)).post();
+            }
+            num_goods_squared.add(num_goods.get(0));
+            num_goods_squared.add(num_goods.get(2));
+            System.out.println(num_goods_squared.size());
+
+            //add constant to good array
+            num_goods.add(model.intVar("const", 40));
+
+            //create profit variable
+            IntVar profit = model.intVar("Profit", 0, 1000000);
+            IntVar cost = model.intVar("cost", 0, 1000);
+
+            IntVar[] num_goods_array = new IntVar[num_goods.size()];
+            IntVar[] num_goods_array_squared = new IntVar[num_goods_squared.size()];
+
+            // add constraint to buy all available ressources at most
+            for (int i = 0; i < openitems.size(); i++) {
+                model.arithm(num_goods.get(i), "<=", openitems.get(i)).post();
+            }
+
+            // add constraint to maximize profi and constrain it to spend money at most
+            model.scalar(num_goods.toArray(num_goods_array), new int[]{4, 100, 5, 40, 20, 80, 4, 1}, "=", profit).post();
+            model.scalar(num_goods_squared.toArray(num_goods_array_squared), new int[]{4, 100, 5, 80, 40, 320, 4, 50, -10}, "=", cost).post();
+            model.arithm(cost, "<=", money).post();
+            //model.setObjective(Model.MAXIMIZE, profit);
+
+            Solver solver = model.getSolver();
+            Solution best = solver.findOptimalSolution(profit, true);
+
+            return num_goods.stream().mapToInt(var -> best.getIntVal(var)).toArray();
+        }
+
+        private Integer optimizedProfit() { // IN PROGRESS , SEMI FUNCTIONAL BUT NOT VERY EFFECTIVE
+            ArrayList<Integer> openStackCount = new ArrayList<>();
+            Resource[] allResources = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
+            for (int j = 0; j < allResources.length; j++) {
+                int i = 0;
+                switch (allResources[j]) {
+                    case C: //DONE
+                        i += open.countByResource(C);
+                        break;
+                    case D:
+                        i += open.countByResource(D);
+                        break;
+                    case E: //DONE
+                        i += open.countByResource(E);
+                        break;
+                    case J:
+                        i += open.countByResource(J);
+                    case K:
+                        i += open.countByResource(K);
+                        break;
+                    case M:
+                        i += open.countByResource(M);
+                    case N: //DONE
+                        i += open.countByResource(N);
+                        break;
+                    case W:
+                        i += open.countByResource(W);
+                    case X:
+                        i += open.countByResource(X);
+                    case Y:
+                        i += open.countByResource(Y);
+                    case Z:
+                        i += open.countByResource(Z);
+                        break;
+                    case Q:
+                        i += open.countByResource(Q);
+                        break;
+                }
+                openStackCount.add(i);
+            }
+            int[] best = findBestPrices(wallet.getCredits(),openStackCount);
+            switch (resource) {
+                case C: //DONE
+                    return 4*best[0]+ 50;
+                case D:
+                    return fib(best[1]);
+                case E: //DONE
+                    return Math.max(5*best[2]-10, 0);
+                case J:
+                case K:
+                    return 40*best[3];
+                case M:
+                case N:
+                    return 20*best[4];
+                case W:
+                case X:
+                case Y:
+                case Z:
+                    return 80*best[5];
+                case Q: //TODO
+                    return 4*best[6];
+                default:
+                    return 0;
+            }
         }
 
         /************************************
