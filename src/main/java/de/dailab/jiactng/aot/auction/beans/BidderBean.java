@@ -75,7 +75,8 @@ public class BidderBean extends AbstractAgentBean {
 
     @Override
     public void doStart() throws Exception {
-        IGroupAddress group = CommunicationAddressFactory.createGroupAddress("test-group");
+        IGroupAddress group = CommunicationAddressFactory.createGroupAddress(this.messageGroup);
+        log.info("MESSAGE GROUP:"+this.messageGroup);
         IActionDescription joinAction = retrieveAction(ICommunicationBean.ACTION_JOIN_GROUP);
         invoke(joinAction, new Serializable[]{group});
         this.memory.attach(new MessageObserver(), new JiacMessage());
