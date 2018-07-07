@@ -16,6 +16,8 @@
 		<property name="agents">
 			<list>
 				<ref bean="BidderAgent" />
+                <ref bean="BidderAgent1" />
+                <ref bean="BidderAgent2" />
 			</list>
 		</property>
 	</bean>
@@ -23,10 +25,10 @@
 	<bean name="BidderAgent" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
-				<bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.BidderBean" scope="prototype">
+				<bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.optimProfitBot" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					
-					<property name="bidderId" value="20_maxProfit" />
+					<property name="bidderId" value="20_optimProfit" />
 					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
 					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
 				</bean>
@@ -34,4 +36,31 @@
 		</property>
 	</bean>
 
+    <bean name="BidderAgent1" parent="SimpleAgent" scope="prototype">
+        <property name="agentBeans">
+            <list>
+                <bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.maxProfitBot" scope="prototype">
+                    <property name="logLevel" value="INFO" />
+
+                    <property name="bidderId" value="20_maxPofit" />
+                    <property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+                    <!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean name="BidderAgent2" parent="SimpleAgent" scope="prototype">
+        <property name="agentBeans">
+            <list>
+                <bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.maxEndBot" scope="prototype">
+                    <property name="logLevel" value="INFO" />
+
+                    <property name="bidderId" value="20_maxEnd" />
+                    <property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+                    <!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+                </bean>
+            </list>
+        </property>
+    </bean>
 </beans>
