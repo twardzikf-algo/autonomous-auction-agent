@@ -53,6 +53,7 @@ public class BidderBean extends AbstractAgentBean {
     /***************
      * ATTRIBUTES
      ***************/
+    private Boolean auctionStarted = Boolean.FALSE;
     private String bidderId;
     private String messageGroup;
     private ICommunicationAddress auctioneer;
@@ -126,8 +127,12 @@ public class BidderBean extends AbstractAgentBean {
      ****************************/
 
     private void handleStartAuction(JiacMessage message) {
-        auctioneer = message.getSender();
-        send(new Register(bidderId), auctioneer);
+        if( !auctionStarted ){
+            auctioneer = message.getSender();
+            send(new Register(bidderId), auctioneer);
+            auctionStarted = Boolean.TRUE;
+        }
+
     }
 
     private void handleInitializeBidder(JiacMessage message) {
@@ -166,6 +171,7 @@ public class BidderBean extends AbstractAgentBean {
 
     private void handleEndAuction(JiacMessage message) {
         EndAuction payload = (EndAuction) message.getPayload();
+        auctionStarted = Boolean.FALSE;
         if (payload.getWinner().equals(bidderId)) log.info("I WON THE AUCTION!!!!!");
         else log.info("I LOST THE AUCTION!!!!!");
     }

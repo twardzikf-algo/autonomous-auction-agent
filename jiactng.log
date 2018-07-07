@@ -464,3 +464,5 @@ Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm:
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:31:28,590 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 2828 mb of usable space - resetting to maximum available disk space: 2828 mb
+2018-07-07 12:31:28,814 INFO [n-8d480a2431c6.a-8d47e9ed5a6b.BidderBean] - Agent 20_maxProfit started.

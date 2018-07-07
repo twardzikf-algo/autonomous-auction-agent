@@ -11,7 +11,7 @@
 
 	<!-- for testing, use NodeWithJMX, for final competition, use AotGatewayNode -->
 <!-- 	<bean name="BidderNode" parent="AotGatewayNode" scope="singleton"> -->
-	<bean name="BidderNode" parent="NodeWithJMX" scope="singleton">
+	<bean name="BidderNode" parent="AotGatewayNode" scope="singleton">
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
 			<list>
