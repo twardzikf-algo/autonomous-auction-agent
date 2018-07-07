@@ -13,9 +13,21 @@ public class StartAuction implements IFact {
 
 	private static final long serialVersionUID = -3738971099847743500L;
 
+	/** description to distinguish different StartAuction messages */
+	private final String message;
+	
+	
+	public StartAuction(String message) {
+		this.message = message;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("StartAuction()");
+		return String.format("StartAuction(%s)", message);
 	}
 	
 }

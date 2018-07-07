@@ -1,14 +1,15 @@
 package de.dailab.jiactng.aot.auction.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -17,7 +18,8 @@ import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
 
-import de.dailab.jiactng.agentcore.AbstractAgentBean;
+import de.dailab.jiactng.agentcore.action.AbstractMethodExposingBean;
+import de.dailab.jiactng.agentcore.action.scope.ActionScope;
 import de.dailab.jiactng.agentcore.comm.CommunicationAddressFactory;
 import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.ICommunicationBean;
@@ -49,10 +51,10 @@ import de.dailab.jiactng.aot.auction.onto.Wallet;
  * and handle the bids that come back, determine the winner, check the balances,
  * etc. Please see the included sequence diagram for an overview of the protocol.
  */
-public class AuctioneerBean extends AbstractAgentBean {
+public class AuctioneerBean extends AbstractMethodExposingBean {
 
 	/** the current state of the auction (not to be confused with the lifecycle state of the agent) */
-	enum Phase { STARTING, REGISTRATION, BIDDING, EVALUATION, END }
+	enum Phase { STARTING, REGISTRATION, BIDDING, EVALUATION, END, IDLE }
 	
 	/*
 	 * CONFIGURATION
@@ -77,6 +79,12 @@ public class AuctioneerBean extends AbstractAgentBean {
 	/** message group where to send multicast messages to */
 	private String messageGroup;
 	
+	/** message sent when starting the auction */
+	private String startMessage;
+	
+	/** quick&dirty authentication for action invocations */
+	private String secretToken;
+	
 	/*
 	 * STATE
 	 */
@@ -97,7 +105,7 @@ public class AuctioneerBean extends AbstractAgentBean {
 	private AtomicInteger callIdProvider;
 	
 	/** the current phase */
-	private Phase phase;
+	private Phase phase = Phase.IDLE;
 	
 	/*
 	 * LIFECYCLE METHODS
@@ -107,27 +115,25 @@ public class AuctioneerBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		// initialize items as a stack; items offered by bidders are pushed to the top
 		callIdProvider = new AtomicInteger();
-		items = new LinkedList<>();
-		for (Resource res : Resource.generateRandomResources(numItems, randomSeed)) {
-			items.add(new Item(callIdProvider.incrementAndGet(), res, null, minOffer));
-		}
 		
 		// attach memory observer for handling messages
 		this.memory.attach(new MessageObserver(), new JiacMessage());
 		
-		current = null;
-		phase = Phase.STARTING;
+		startAuction(secretToken);
 	}
 	
 	@Override
 	public void execute() {
+		// do nothing, not even log stuff, when idling...
+		if (phase == Phase.IDLE) return;
+		
 		log.info("Current Phase: " + phase);
 		log.info("Messages in Memory: " + memory.readAll(new JiacMessage()).size());
 		
 		switch (phase) {
 		case STARTING:
 			// send initial start auction message
-			sendGroup(new StartAuction());
+			sendGroup(new StartAuction(startMessage));
 			phase = Phase.REGISTRATION;
 			break;
 		
@@ -141,11 +147,19 @@ public class AuctioneerBean extends AbstractAgentBean {
 				if (! (message.getPayload() instanceof Register)) continue;
 				Register register = (Register) message.getPayload();
 				String bidder = register.getBidderId();
+				
+				// already registered? if not, remember message box
+				if (messageBoxes.containsKey(bidder)) {
+					memory.remove(message);
+					continue;
+				}
 				messageBoxes.put(bidder, message.getSender());
 				
 				// initialize wallet
 				Wallet wallet = new Wallet(bidder, initialBalance);
-				wallet.add(Math.random() < 0.5 ? Resource.J : Resource.K, initialJKcount);
+				if (initialJKcount > 0) {
+					wallet.add(Math.random() < 0.5 ? Resource.J : Resource.K, initialJKcount);
+				}
 				wallets.put(bidder, wallet);
 
 				// send initialization message
@@ -179,7 +193,7 @@ public class AuctioneerBean extends AbstractAgentBean {
 			}
 			
 			// start new round, send request to message group
-			sendGroup(new CallForBids(current.getCallId(), current.getType(), current.getReservationPrice()));
+			sendRegistered(new CallForBids(current.getCallId(), current.getType(), current.getReservationPrice()));
 			
 			// next phase: evaluation
 			phase = Phase.EVALUATION;
@@ -189,7 +203,7 @@ public class AuctioneerBean extends AbstractAgentBean {
 			Bid first = null;
 			Bid secnd = null;
 			Set<Bid> invalid = new HashSet<>();
-			Collection<Bid> bids = new ArrayList<>(); 
+			Map<String, Bid> bids = new HashMap<>(); 
 			
 			// get all messages from memory, inspect bids
 			for (JiacMessage message : memory.readAll(new JiacMessage())) {
@@ -198,7 +212,14 @@ public class AuctioneerBean extends AbstractAgentBean {
 
 				// if bidder ID does not match sender, discard Bid
 				if (checkMessage(message, bid.getBidderId())) {
-					bids.add(bid);
+					if (bids.containsKey(bid.getBidderId()) && 
+							bids.get(bid.getBidderId()).getOffer() >= bid.getOffer()) {
+						// ignore lower bid by same bidder
+						log.info("Ignoring new lower bid " + bid);
+						memory.remove(message);
+						continue;
+					}
+					bids.put(bid.getBidderId(), bid);
 					
 					// get wallet for bidder
 					Wallet wallet = wallets.get(bid.getBidderId());
@@ -224,14 +245,10 @@ public class AuctioneerBean extends AbstractAgentBean {
 				memory.remove(message);
 			}
 			
-			log.info("Evaluating bids");
-			wallets.entrySet().forEach(log::info);
-			bids.forEach(log::info);
-			
 			// send out inform messages
 			// if >1 bid then 2nd price, else if 1 bid then res price, else null
 			Integer price = secnd != null ? secnd.getOffer() : (first != null ? current.getReservationPrice() : null);
-			for (Bid bid : bids) {
+			for (Bid bid : bids.values()) {
 				BuyType type = null;
 				if (bid == first) {
 					// update wallet
@@ -269,12 +286,22 @@ public class AuctioneerBean extends AbstractAgentBean {
 			break;
 	
 		case END:
+			// log final wallets
+			log.info("Final Wallets");
+			for (Entry<String, Wallet> e : wallets.entrySet())
+				log.info(e);
+			
 			// send information about winner and winner's final wallet to all bidders
-			Wallet winner = wallets.values().stream().max(Comparator.comparing(Wallet::getValue)).get();
-			sendGroup(new EndAuction(winner.getBidderId(), winner));
+			Optional<Wallet> winner = wallets.values().stream().max(Comparator.comparing(Wallet::getValue));
+			if (winner.isPresent()) {
+				sendRegistered(new EndAuction(winner.get().getBidderId(), winner.get()));
+			}
 			
 			// stop regular execution
-			setExecutionInterval(0);
+			phase = Phase.IDLE;
+			break;
+			
+		case IDLE:
 			break;
 		}
 	}
@@ -319,6 +346,63 @@ public class AuctioneerBean extends AbstractAgentBean {
 	}
 	
 	/*
+	 * AUCTION MANAGEMENT ACTIONS
+	 */
+
+	public static final String ACTION_START_AUCTION = "Auctioneer#startAuction";
+	public static final String ACTION_CONFIGURE = "Auctioneer#configure";
+	public static final String ACTION_GET_LAST_RESULTS = "Auctioneer#getLastResults";
+	public static final String ACTION_GET_PHASE = "Auctioneer#getPhase";
+	
+	@Expose(name=ACTION_START_AUCTION, scope=ActionScope.GLOBAL)
+	public void startAuction(String token) {
+		checkToken(token);
+		if (phase != Phase.IDLE)
+			throw new IllegalStateException("Can not start new Auction in Phase " + phase);
+		
+		// initialize items as a stack; items offered by bidders are pushed to the top
+		items = new LinkedList<>();
+		for (Resource res : Resource.generateRandomResources(numItems, randomSeed)) {
+			items.add(new Item(callIdProvider.incrementAndGet(), res, null, minOffer));
+		}
+		
+		current = null;
+		phase = Phase.STARTING;
+	}
+	
+	@Expose(name=ACTION_CONFIGURE, scope=ActionScope.GLOBAL)
+	public void configure(String token, int initBlnc, int initJkCnt, int numItms, long seed, int minOffr) {
+		checkToken(token);
+		setInitialBalance(initBlnc);
+		setInitialJKcount(initJkCnt);
+		setNumItems(numItms);
+		setRandomSeed(seed);
+		setMinOffer(minOffr);
+	}
+
+	@Expose(name=ACTION_GET_LAST_RESULTS, scope=ActionScope.GLOBAL)
+	public String getLastResults(String token) {
+		checkToken(token);
+		if (wallets != null) {
+			return wallets.values().stream()
+					.sorted(Comparator.comparing(Wallet::getValue).reversed())
+					.map(Wallet::toString)
+					.collect(Collectors.joining("\n"));
+		}
+		return null;
+	}
+
+	@Expose(name=ACTION_GET_PHASE, scope=ActionScope.GLOBAL)
+	public String getPhase() {
+		return phase.toString();
+	}
+	
+	private void checkToken(String token) {
+		if (! Objects.equals(secretToken, token)) 
+			throw new IllegalArgumentException("Invalid Action Invocation Token: " + token);
+	}
+	
+	/*
 	 * HELPER METHODS
 	 * some small utility functions for commonly used procedures
 	 */
@@ -337,6 +421,14 @@ public class AuctioneerBean extends AbstractAgentBean {
 	private void sendGroup(IFact payload) {
 		log.info(String.format("Sending %s to group", payload));
 		send(payload, CommunicationAddressFactory.createGroupAddress(messageGroup));
+	}
+	
+	/**
+	 * send message to all registered bidders
+	 */
+	private void sendRegistered(IFact payload) {
+		log.info(String.format("Sending %s to registered bidders", payload));
+		messageBoxes.values().forEach(m -> send(payload, m));
 	}
 	
 	/**
@@ -390,5 +482,13 @@ public class AuctioneerBean extends AbstractAgentBean {
 	
 	public void setMessageGroup(String messageGroup) {
 		this.messageGroup = messageGroup;
+	}
+	
+	public void setStartMessage(String startMessage) {
+		this.startMessage = startMessage;
+	}
+	
+	public void setSecretToken(String secretToken) {
+		this.secretToken = secretToken;
 	}
 }

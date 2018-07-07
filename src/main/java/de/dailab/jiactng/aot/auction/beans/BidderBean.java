@@ -57,6 +57,7 @@ public class BidderBean extends AbstractAgentBean {
     /***************
      * ATTRIBUTES
      ***************/
+    private Boolean auctionStarted = Boolean.FALSE;
     private String bidderId;
     private String messageGroup;
     private ICommunicationAddress auctioneer;
@@ -78,7 +79,8 @@ public class BidderBean extends AbstractAgentBean {
 
     @Override
     public void doStart() throws Exception {
-        IGroupAddress group = CommunicationAddressFactory.createGroupAddress("test-group");
+        IGroupAddress group = CommunicationAddressFactory.createGroupAddress(this.messageGroup);
+        log.info("MESSAGE GROUP:"+this.messageGroup);
         IActionDescription joinAction = retrieveAction(ICommunicationBean.ACTION_JOIN_GROUP);
         invoke(joinAction, new Serializable[]{group});
         this.memory.attach(new MessageObserver(), new JiacMessage());
@@ -130,8 +132,12 @@ public class BidderBean extends AbstractAgentBean {
      ****************************/
 
     private void handleStartAuction(JiacMessage message) {
-        auctioneer = message.getSender();
-        send(new Register(bidderId), auctioneer);
+        if( !auctionStarted ){
+            auctioneer = message.getSender();
+            send(new Register(bidderId), auctioneer);
+            auctionStarted = Boolean.TRUE;
+        }
+
     }
 
     private void handleInitializeBidder(JiacMessage message) {
@@ -170,6 +176,7 @@ public class BidderBean extends AbstractAgentBean {
 
     private void handleEndAuction(JiacMessage message) {
         EndAuction payload = (EndAuction) message.getPayload();
+        auctionStarted = Boolean.FALSE;
         if (payload.getWinner().equals(bidderId)) log.info("I WON THE AUCTION!!!!!");
         else log.info("I LOST THE AUCTION!!!!!");
     }
