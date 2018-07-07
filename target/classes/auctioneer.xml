@@ -6,12 +6,19 @@
 
 	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
 	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+	
+	<import resource="classpath:gateway_settings.xml" />
 
+	<!-- for testing, use NodeWithJMX, for final competition, use AotGatewayNode -->
+	<!-- Students: do NOT start the auctioneer for final competition! -->
+<!-- 	<bean name="AuctioneerNode" parent="AotGatewayNode" scope="singleton"> -->
 	<bean name="AuctioneerNode" parent="NodeWithJMX" scope="singleton">
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
 			<list>
 				<ref bean="AuctioneerAgent" />
+
+				<ref bean="AuctionRunnerAgent" />
 			</list>
 		</property>
 	</bean>
@@ -21,16 +28,30 @@
 			<list>
 				<bean name="AuctioneerBean" class="de.dailab.jiactng.aot.auction.beans.AuctioneerBean" scope="prototype">
 					<property name="logLevel" value="INFO" />
-					
 					<property name="executionInterval" value="2000" />
 					
 					<property name="initialJKcount" value="5" />
 					<property name="initialBalance" value="1000" />
 					<property name="randomSeed" value="12345" />
-					<property name="numItems" value="50" />
+					<property name="numItems" value="100" />
 					<property name="minOffer" value="0" />
-					<!-- <property name="messageGroup" value="de.dailab.jiactng.aot.auction" /> -->
-					<property name="messageGroup" value="test-group" />
+					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+					<property name="startMessage" value="dummy" />
+					<property name="secretToken" value="nottheactualsecrettoken" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="AuctionRunnerAgent" parent="NonBlockingAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="AuctionRunnerBean" class="de.dailab.jiactng.aot.auction.beans.AuctionRunnerBean" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="300000" />
+
+					<property name="secretToken" value="nottheactualsecrettoken" />
+					<property name="numberOfAuctions" value="3" />
 				</bean>
 			</list>
 		</property>

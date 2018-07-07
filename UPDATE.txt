@@ -1,0 +1,22 @@
+CHANGES IN NEW VERSION
+----------------------
+
+* added Gateway configuration files
+* some fixes and extensions in the auctioneer agent; the protocol for interaction with your bidder agents is unchanged
+* added message to StartAuction class to distinguish different auctioneer agents
+* added three actions to auctioneer for re-configuration and starting auctions; you are not supposed to use those actions
+* added two parameters to auctioneer bean, for setting start auction message and action token
+
+
+WHAT TO OBSERVE FOR FINAL COMPETITION
+-------------------------------------
+
+* make sure that your bidder agent uses a unique and consistent bidderId in the various messages; best use your AOT group name or some name starting with your AOT group name
+* due to a recently discovered bug, the initial StartAuction message can be delivered more than once; your code has to be able to handle this, e.g. by ignoring all but the first StartAuction message
+* the auctioneer agent will be started by us and connect with your bidder agents via a gateway server; during the competition, DO NOT start your own auctioneer agent in the gateway group
+* for connecting to the auctioneer agent, change the "parent" of your bidder agent node to "AotGatewayNode"
+* our auctioneer agent will provide a special message, "aot2018auction", in the StartAuction message; you can check this message to make sure you are talking to the right auctioneer, and not an auctioneer started by mistake by one of the other groups
+* of course, you could start an auctioneer agent sending the same string, but if you do, and if we notice, you will be disqualified
+* new auctions will start in regular intervals; all bidder agents that are running at that time will participate in that auction
+* there will never be more than one auction running at the same time
+

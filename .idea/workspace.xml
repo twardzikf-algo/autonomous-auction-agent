@@ -2,16 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="392f362d-62d2-4400-9b8d-ea0ffd8a7041" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jiactng.log" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiactng.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiactng.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jiactng.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiactng.log.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiactng.log.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiactng.log.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/StartAuction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/StartAuction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/auctioneer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/auctioneer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/bidder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bidder.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$History$BuyFact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$History.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/auctioneer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/auctioneer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bidder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bidder.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$MessageObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$MessageObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$Phase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean$Phase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$Brain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$Brain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$ClosedStack$ClosedItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$ClosedStack$ClosedItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$ClosedStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$ClosedStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$MessageObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$MessageObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$OpenStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$OpenStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/onto/StartAuction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/onto/StartAuction.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,78 +37,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BidderBean.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BidderBean.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5253">
+            <state relative-caret-position="15">
               <caret line="88" column="59" selection-start-line="88" selection-start-column="59" selection-end-line="88" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3071#3098#1" expanded="true" />
-                <element signature="e#8646#8647#0" expanded="true" />
-                <element signature="e#8711#8712#0" expanded="true" />
-                <element signature="e#8915#8916#0" expanded="true" />
-                <element signature="e#8952#8953#0" expanded="true" />
-                <element signature="e#8989#8990#0" expanded="true" />
-                <element signature="e#9026#9027#0" expanded="true" />
-                <element signature="e#9079#9080#0" expanded="true" />
-                <element signature="e#9132#9133#0" expanded="true" />
-                <element signature="e#9203#9204#0" expanded="true" />
-                <element signature="e#9255#9256#0" expanded="true" />
-                <element signature="e#15365#15366#0" expanded="true" />
-                <element signature="e#15407#15408#0" expanded="true" />
-                <element signature="e#15439#15440#0" expanded="true" />
-                <element signature="e#15478#15479#0" expanded="true" />
-                <element signature="e#15511#15512#0" expanded="true" />
-                <element signature="e#15554#15555#0" expanded="true" />
-                <element signature="e#15592#15593#0" expanded="true" />
-                <element signature="e#15635#15636#0" expanded="true" />
-                <element signature="e#15677#15678#0" expanded="true" />
-                <element signature="e#15718#15719#0" expanded="true" />
-                <element signature="e#15751#15752#0" expanded="true" />
-                <element signature="e#15799#15800#0" expanded="true" />
-                <element signature="e#16167#16168#0" expanded="true" />
-                <element signature="e#16230#16231#0" expanded="true" />
-                <element signature="e#16341#16342#0" expanded="true" />
-                <element signature="e#16395#16396#0" expanded="true" />
-                <element signature="e#16449#16450#0" expanded="true" />
-                <element signature="e#16491#16492#0" expanded="true" />
-                <element signature="e#16708#16709#0" expanded="true" />
-                <element signature="e#16751#16752#0" expanded="true" />
-                <element signature="e#16791#16792#0" expanded="true" />
-                <element signature="e#16834#16835#0" expanded="true" />
-                <element signature="e#16878#16879#0" expanded="true" />
-                <element signature="e#16919#16920#0" expanded="true" />
-                <element signature="e#16952#16953#0" expanded="true" />
-                <element signature="e#17000#17001#0" expanded="true" />
-                <element signature="e#17405#17406#0" expanded="true" />
-                <element signature="e#17507#17508#0" expanded="true" />
-                <element signature="e#18762#18763#0" expanded="true" />
-                <element signature="e#18808#18809#0" expanded="true" />
-                <element signature="e#18863#18864#0" expanded="true" />
-                <element signature="e#18917#18918#0" expanded="true" />
-                <element signature="e#18962#18963#0" expanded="true" />
-                <element signature="e#19010#19011#0" expanded="true" />
-                <element signature="e#19069#19070#0" expanded="true" />
-                <element signature="e#19127#19128#0" expanded="true" />
-                <element signature="e#19172#19173#0" expanded="true" />
-                <element signature="e#19219#19220#0" expanded="true" />
-                <element signature="e#19277#19278#0" expanded="true" />
-                <element signature="e#19333#19334#0" expanded="true" />
-                <element signature="e#19372#19373#0" expanded="true" />
-                <element signature="e#19414#19415#0" expanded="true" />
-                <element signature="e#19461#19462#0" expanded="true" />
-                <element signature="e#19507#19508#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EndAuction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/EndAuction.java">
+      <file leaf-file-name="AuctionRunnerBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctionRunnerBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="-123">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -111,8 +70,20 @@
       <file leaf-file-name="auctioneer.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+            <state relative-caret-position="22">
+              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuctioneerBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="123" column="4" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,13 +97,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bidder.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bidder.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
+            <state relative-caret-position="420">
+              <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gateway_settings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/gateway_settings.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="GatewayNode.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/GatewayNode.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -149,9 +130,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/bidder.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/auctioneer.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/bidder.xml" />
       </list>
     </option>
   </component>
@@ -183,9 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,6 +293,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,12 +409,13 @@
       <workItem from="1529409929212" duration="851000" />
       <workItem from="1530281162311" duration="741000" />
       <workItem from="1530373822725" duration="24215000" />
-      <workItem from="1530615784093" duration="20037000" />
+      <workItem from="1530615784093" duration="20233000" />
+      <workItem from="1530958567821" duration="578000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45844000" />
+    <option name="totallyTimeSpent" value="46618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="870" extended-state="6" />
@@ -449,25 +431,25 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27069646" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2506775" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25353926" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39972898" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,67 +464,47 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/EndAuction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartAuctioneer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartBidder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3930">
           <caret line="262" column="59" selection-start-line="262" selection-start-column="59" selection-end-line="262" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3071#3098#1" expanded="true" />
-            <element signature="e#8646#8647#0" expanded="true" />
-            <element signature="e#8711#8712#0" expanded="true" />
-            <element signature="e#8915#8916#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#8989#8990#0" expanded="true" />
-            <element signature="e#9026#9027#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9132#9133#0" expanded="true" />
-            <element signature="e#9203#9204#0" expanded="true" />
-            <element signature="e#9255#9256#0" expanded="true" />
-            <element signature="e#15365#15366#0" expanded="true" />
-            <element signature="e#15407#15408#0" expanded="true" />
-            <element signature="e#15439#15440#0" expanded="true" />
-            <element signature="e#15478#15479#0" expanded="true" />
-            <element signature="e#15511#15512#0" expanded="true" />
-            <element signature="e#15554#15555#0" expanded="true" />
-            <element signature="e#15592#15593#0" expanded="true" />
-            <element signature="e#15635#15636#0" expanded="true" />
-            <element signature="e#15677#15678#0" expanded="true" />
-            <element signature="e#15718#15719#0" expanded="true" />
-            <element signature="e#15751#15752#0" expanded="true" />
-            <element signature="e#15799#15800#0" expanded="true" />
-            <element signature="e#16167#16168#0" expanded="true" />
-            <element signature="e#16230#16231#0" expanded="true" />
-            <element signature="e#16341#16342#0" expanded="true" />
-            <element signature="e#16395#16396#0" expanded="true" />
-            <element signature="e#16449#16450#0" expanded="true" />
-            <element signature="e#16491#16492#0" expanded="true" />
-            <element signature="e#16708#16709#0" expanded="true" />
-            <element signature="e#16751#16752#0" expanded="true" />
-            <element signature="e#16791#16792#0" expanded="true" />
-            <element signature="e#16834#16835#0" expanded="true" />
-            <element signature="e#16878#16879#0" expanded="true" />
-            <element signature="e#16919#16920#0" expanded="true" />
-            <element signature="e#16952#16953#0" expanded="true" />
-            <element signature="e#17000#17001#0" expanded="true" />
-            <element signature="e#17405#17406#0" expanded="true" />
-            <element signature="e#17507#17508#0" expanded="true" />
-            <element signature="e#18762#18763#0" expanded="true" />
-            <element signature="e#18808#18809#0" expanded="true" />
-            <element signature="e#18863#18864#0" expanded="true" />
-            <element signature="e#18917#18918#0" expanded="true" />
-            <element signature="e#18962#18963#0" expanded="true" />
-            <element signature="e#19010#19011#0" expanded="true" />
-            <element signature="e#19069#19070#0" expanded="true" />
-            <element signature="e#19127#19128#0" expanded="true" />
-            <element signature="e#19172#19173#0" expanded="true" />
-            <element signature="e#19219#19220#0" expanded="true" />
-            <element signature="e#19277#19278#0" expanded="true" />
-            <element signature="e#19333#19334#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19414#19415#0" expanded="true" />
-            <element signature="e#19461#19462#0" expanded="true" />
-            <element signature="e#19507#19508#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -619,61 +581,6 @@
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3071#3098#1" expanded="true" />
-            <element signature="e#8646#8647#0" expanded="true" />
-            <element signature="e#8711#8712#0" expanded="true" />
-            <element signature="e#8915#8916#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#8989#8990#0" expanded="true" />
-            <element signature="e#9026#9027#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9132#9133#0" expanded="true" />
-            <element signature="e#9203#9204#0" expanded="true" />
-            <element signature="e#9255#9256#0" expanded="true" />
-            <element signature="e#15365#15366#0" expanded="true" />
-            <element signature="e#15407#15408#0" expanded="true" />
-            <element signature="e#15439#15440#0" expanded="true" />
-            <element signature="e#15478#15479#0" expanded="true" />
-            <element signature="e#15511#15512#0" expanded="true" />
-            <element signature="e#15554#15555#0" expanded="true" />
-            <element signature="e#15592#15593#0" expanded="true" />
-            <element signature="e#15635#15636#0" expanded="true" />
-            <element signature="e#15677#15678#0" expanded="true" />
-            <element signature="e#15718#15719#0" expanded="true" />
-            <element signature="e#15751#15752#0" expanded="true" />
-            <element signature="e#15799#15800#0" expanded="true" />
-            <element signature="e#16167#16168#0" expanded="true" />
-            <element signature="e#16230#16231#0" expanded="true" />
-            <element signature="e#16341#16342#0" expanded="true" />
-            <element signature="e#16395#16396#0" expanded="true" />
-            <element signature="e#16449#16450#0" expanded="true" />
-            <element signature="e#16491#16492#0" expanded="true" />
-            <element signature="e#16708#16709#0" expanded="true" />
-            <element signature="e#16751#16752#0" expanded="true" />
-            <element signature="e#16791#16792#0" expanded="true" />
-            <element signature="e#16834#16835#0" expanded="true" />
-            <element signature="e#16878#16879#0" expanded="true" />
-            <element signature="e#16919#16920#0" expanded="true" />
-            <element signature="e#16952#16953#0" expanded="true" />
-            <element signature="e#17000#17001#0" expanded="true" />
-            <element signature="e#17405#17406#0" expanded="true" />
-            <element signature="e#17507#17508#0" expanded="true" />
-            <element signature="e#18762#18763#0" expanded="true" />
-            <element signature="e#18808#18809#0" expanded="true" />
-            <element signature="e#18863#18864#0" expanded="true" />
-            <element signature="e#18917#18918#0" expanded="true" />
-            <element signature="e#18962#18963#0" expanded="true" />
-            <element signature="e#19010#19011#0" expanded="true" />
-            <element signature="e#19069#19070#0" expanded="true" />
-            <element signature="e#19127#19128#0" expanded="true" />
-            <element signature="e#19172#19173#0" expanded="true" />
-            <element signature="e#19219#19220#0" expanded="true" />
-            <element signature="e#19277#19278#0" expanded="true" />
-            <element signature="e#19333#19334#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19414#19415#0" expanded="true" />
-            <element signature="e#19461#19462#0" expanded="true" />
-            <element signature="e#19507#19508#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,27 +716,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/EndAuction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/InitializeBidder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="123" column="44" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,24 +730,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/onto/EndAuction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="24" column="65" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartGateway.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartAuctioneer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctionRunnerBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        <state relative-caret-position="-123">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="88" column="59" selection-start-line="88" selection-start-column="59" selection-end-line="88" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -868,68 +768,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/AuctioneerBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5253">
-          <caret line="88" column="59" selection-start-line="88" selection-start-column="59" selection-end-line="88" selection-end-column="59" />
+        <state relative-caret-position="400">
+          <caret line="123" column="4" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3071#3098#1" expanded="true" />
-            <element signature="e#8646#8647#0" expanded="true" />
-            <element signature="e#8711#8712#0" expanded="true" />
-            <element signature="e#8915#8916#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#8989#8990#0" expanded="true" />
-            <element signature="e#9026#9027#0" expanded="true" />
-            <element signature="e#9079#9080#0" expanded="true" />
-            <element signature="e#9132#9133#0" expanded="true" />
-            <element signature="e#9203#9204#0" expanded="true" />
-            <element signature="e#9255#9256#0" expanded="true" />
-            <element signature="e#15365#15366#0" expanded="true" />
-            <element signature="e#15407#15408#0" expanded="true" />
-            <element signature="e#15439#15440#0" expanded="true" />
-            <element signature="e#15478#15479#0" expanded="true" />
-            <element signature="e#15511#15512#0" expanded="true" />
-            <element signature="e#15554#15555#0" expanded="true" />
-            <element signature="e#15592#15593#0" expanded="true" />
-            <element signature="e#15635#15636#0" expanded="true" />
-            <element signature="e#15677#15678#0" expanded="true" />
-            <element signature="e#15718#15719#0" expanded="true" />
-            <element signature="e#15751#15752#0" expanded="true" />
-            <element signature="e#15799#15800#0" expanded="true" />
-            <element signature="e#16167#16168#0" expanded="true" />
-            <element signature="e#16230#16231#0" expanded="true" />
-            <element signature="e#16341#16342#0" expanded="true" />
-            <element signature="e#16395#16396#0" expanded="true" />
-            <element signature="e#16449#16450#0" expanded="true" />
-            <element signature="e#16491#16492#0" expanded="true" />
-            <element signature="e#16708#16709#0" expanded="true" />
-            <element signature="e#16751#16752#0" expanded="true" />
-            <element signature="e#16791#16792#0" expanded="true" />
-            <element signature="e#16834#16835#0" expanded="true" />
-            <element signature="e#16878#16879#0" expanded="true" />
-            <element signature="e#16919#16920#0" expanded="true" />
-            <element signature="e#16952#16953#0" expanded="true" />
-            <element signature="e#17000#17001#0" expanded="true" />
-            <element signature="e#17405#17406#0" expanded="true" />
-            <element signature="e#17507#17508#0" expanded="true" />
-            <element signature="e#18762#18763#0" expanded="true" />
-            <element signature="e#18808#18809#0" expanded="true" />
-            <element signature="e#18863#18864#0" expanded="true" />
-            <element signature="e#18917#18918#0" expanded="true" />
-            <element signature="e#18962#18963#0" expanded="true" />
-            <element signature="e#19010#19011#0" expanded="true" />
-            <element signature="e#19069#19070#0" expanded="true" />
-            <element signature="e#19127#19128#0" expanded="true" />
-            <element signature="e#19172#19173#0" expanded="true" />
-            <element signature="e#19219#19220#0" expanded="true" />
-            <element signature="e#19277#19278#0" expanded="true" />
-            <element signature="e#19333#19334#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19414#19415#0" expanded="true" />
-            <element signature="e#19461#19462#0" expanded="true" />
-            <element signature="e#19507#19508#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartAuctioneer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/gateway_settings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/GatewayNode.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
         </state>
       </provider>
     </entry>

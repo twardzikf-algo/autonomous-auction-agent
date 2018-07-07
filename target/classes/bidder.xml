@@ -7,6 +7,10 @@
 	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
 	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
 
+	<import resource="classpath:gateway_settings.xml" />
+
+	<!-- for testing, use NodeWithJMX, for final competition, use AotGatewayNode -->
+<!-- 	<bean name="BidderNode" parent="AotGatewayNode" scope="singleton"> -->
 	<bean name="BidderNode" parent="NodeWithJMX" scope="singleton">
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
@@ -22,8 +26,8 @@
 				<bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.BidderBean" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					
-					<property name="bidderId" value="20_maxProfit" />
-					<property name="messageGroup" value="test-group" />
+					<property name="bidderId" value="DummyBidder_1" />
+					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
 					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
 				</bean>
 			</list>

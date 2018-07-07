@@ -1,5 +1,343 @@
-2018-07-03 18:45:41,807 WARN [n-1875e7f076e2.IDirectory.jms] - could not stop JMS connection 
-org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-1875e7f076e2StandardJMSBroker#1) stopped.
+2018-07-07 12:24:33,063 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 2836 mb of usable space - resetting to maximum available disk space: 2836 mb
+2018-07-07 12:24:33,347 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.1.14:49116 failed: java.io.EOFException
+2018-07-07 12:24:33,500 INFO [n-8ce731ecbb1d.a-8ce745886cd4.BidderBean] - Agent DummyBidder_1 started.
+2018-07-07 12:24:35,113 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.1.14:49114 failed: java.io.EOFException
+2018-07-07 12:24:49,049 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: /home/ft/aot18-blatt3 only has 2836 mb of usable space - resetting to maximum available disk space: 2836 mb
+2018-07-07 12:24:50,450 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: STARTING
+2018-07-07 12:24:50,451 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:24:50,458 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending StartAuction(dummy) to group
+2018-07-07 12:24:52,451 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: REGISTRATION
+2018-07-07 12:24:52,451 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:24:54,458 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:24:54,458 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:24:54,459 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(1, C, 0) to registered bidders
+2018-07-07 12:24:56,462 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:24:56,462 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:24:58,468 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:24:58,469 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:24:58,469 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(2, Z, 0) to registered bidders
+2018-07-07 12:25:00,472 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:00,472 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:02,476 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:02,477 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:02,477 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(3, Y, 0) to registered bidders
+2018-07-07 12:25:04,478 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:04,478 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:06,484 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:06,485 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:06,486 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(4, C, 0) to registered bidders
+2018-07-07 12:25:08,484 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:08,484 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:10,484 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:10,484 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:10,485 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(5, C, 0) to registered bidders
+2018-07-07 12:25:12,490 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:12,490 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:14,497 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:14,498 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:14,498 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(6, C, 0) to registered bidders
+2018-07-07 12:25:16,504 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:16,505 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:18,509 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:18,509 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:18,510 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(7, M, 0) to registered bidders
+2018-07-07 12:25:20,517 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:20,518 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:22,525 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:22,525 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:22,526 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(8, W, 0) to registered bidders
+2018-07-07 12:25:24,529 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:24,529 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:26,533 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:26,533 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:26,539 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(9, C, 0) to registered bidders
+2018-07-07 12:25:28,542 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:28,542 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:30,549 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:30,550 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:30,551 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(10, X, 0) to registered bidders
+2018-07-07 12:25:32,549 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:32,549 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:34,550 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:34,550 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:34,551 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(11, Z, 0) to registered bidders
+2018-07-07 12:25:36,556 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:36,556 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:38,562 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:38,562 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:38,563 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(12, E, 0) to registered bidders
+2018-07-07 12:25:40,568 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:40,569 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:42,573 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:42,573 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:42,573 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(13, Y, 0) to registered bidders
+2018-07-07 12:25:44,577 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:44,577 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:46,583 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:46,584 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:46,584 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(14, M, 0) to registered bidders
+2018-07-07 12:25:48,585 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:48,585 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:50,588 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:50,588 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:50,589 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(15, C, 0) to registered bidders
+2018-07-07 12:25:52,593 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:52,593 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:54,601 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:54,602 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:54,602 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(16, W, 0) to registered bidders
+2018-07-07 12:25:56,603 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:25:56,603 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:58,606 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:25:58,606 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:25:58,607 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(17, Z, 0) to registered bidders
+2018-07-07 12:26:00,608 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:00,608 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:02,615 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:02,616 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:02,617 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(18, C, 0) to registered bidders
+2018-07-07 12:26:04,620 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:04,620 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:06,625 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:06,625 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:06,625 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(19, E, 0) to registered bidders
+2018-07-07 12:26:08,634 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:08,634 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:10,641 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:10,641 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:10,642 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(20, M, 0) to registered bidders
+2018-07-07 12:26:12,647 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:12,647 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:14,651 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:14,652 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:14,652 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(21, E, 0) to registered bidders
+2018-07-07 12:26:16,656 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:16,656 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:18,656 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:18,656 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:18,656 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(22, Z, 0) to registered bidders
+2018-07-07 12:26:20,660 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:20,660 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:22,665 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:22,666 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:22,666 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(23, C, 0) to registered bidders
+2018-07-07 12:26:24,667 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:24,668 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:26,674 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:26,675 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:26,676 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(24, C, 0) to registered bidders
+2018-07-07 12:26:28,675 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:28,676 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:30,675 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:30,675 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:30,676 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(25, W, 0) to registered bidders
+2018-07-07 12:26:32,675 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:32,676 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:34,685 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:34,685 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:34,685 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(26, D, 0) to registered bidders
+2018-07-07 12:26:36,686 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:36,686 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:38,693 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:38,694 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:38,695 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(27, C, 0) to registered bidders
+2018-07-07 12:26:40,699 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:40,699 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:42,707 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:42,708 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:42,709 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(28, Y, 0) to registered bidders
+2018-07-07 12:26:44,715 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:44,716 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:46,717 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:46,717 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:46,718 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(29, C, 0) to registered bidders
+2018-07-07 12:26:48,721 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:48,722 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:50,731 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:50,731 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:50,732 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(30, C, 0) to registered bidders
+2018-07-07 12:26:52,739 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:52,739 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:54,740 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:54,740 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:54,741 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(31, C, 0) to registered bidders
+2018-07-07 12:26:56,746 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:26:56,746 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:58,752 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:26:58,753 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:26:58,754 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(32, E, 0) to registered bidders
+2018-07-07 12:27:00,753 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:00,754 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:02,756 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:27:02,757 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:02,757 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(33, E, 0) to registered bidders
+2018-07-07 12:27:04,761 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:04,762 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:06,761 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:27:06,761 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:06,761 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(34, M, 0) to registered bidders
+2018-07-07 12:27:08,769 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:08,769 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:10,771 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:27:10,771 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:10,772 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(35, C, 0) to registered bidders
+2018-07-07 12:27:12,774 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:12,775 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:14,782 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:27:14,782 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:14,783 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(36, M, 0) to registered bidders
+2018-07-07 12:27:16,790 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:16,790 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:18,790 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: BIDDING
+2018-07-07 12:27:18,790 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:18,796 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Sending CallForBids(37, M, 0) to registered bidders
+2018-07-07 12:27:20,796 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Current Phase: EVALUATION
+2018-07-07 12:27:20,796 INFO [n-8ceafb5926c8.a-8ceb0a45b3f0.AuctioneerBean] - Messages in Memory: 0
+2018-07-07 12:27:22,600 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-8ceafb5926c8StandardJMSBroker#1-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-8ceafb5926c8StandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,614 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.1.14:49900 failed: java.io.EOFException
+2018-07-07 12:27:22,614 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: vm://n-8ceafb5926c8StandardJMSBroker#6 failed: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#6) stopped.
+2018-07-07 12:27:22,650 ERROR [n-8ceafb5926c8.IDirectory.jms] - Sending of Message to address 'group:df@dfgroup' through JMS failed!
+javax.jms.JMSException: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,651 ERROR [n-8ceafb5926c8.IDirectory] - sendMessage failed. Message:
+[Headers: {JiacTNGSenderAddress=>msgbox:df@n-8ceafb5926c8;JiacTNGProtocolID=>df:bye;JiacTNGGroupAddress=>df@dfgroup;UUID=>n-8ceafb5926c8}, Payload: null, Sender: msgbox:df@n-8ceafb5926c8]
+de.dailab.jiactng.agentcore.comm.CommunicationException: error while sending message
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:221)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: javax.jms.JMSException: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	... 7 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,680 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-8ceafb5926c8StandardJMSBroker#3-3'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-8ceafb5926c8StandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,722 WARN [n-8ceafb5926c8.a-8ceb0a45b3f0.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-8ceafb5926c8StandardJMSBroker#3) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1445)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,732 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-8ceafb5926c8StandardJMSBroker#3-4'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-8ceafb5926c8StandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,734 WARN [n-8ceafb5926c8.a-8ceae6f4498d.CommunicationBean.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-8ceafb5926c8StandardJMSBroker#5) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#5) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:22,744 WARN [n-8ceafb5926c8.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
 	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
 	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
 	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
@@ -10,7 +348,113 @@ org.apache.activemq.ConnectionFailedException: The JMS connection has failed: pe
 	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
 	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
 	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
-Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-1875e7f076e2StandardJMSBroker#1) stopped.
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ceafb5926c8StandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:23,974 ERROR [n-8ce731ecbb1d.IDirectory.jms] - Sending of Message to address 'group:df@dfgroup' through JMS failed!
+javax.jms.JMSException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1412)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:24,004 ERROR [n-8ce731ecbb1d.IDirectory] - sendMessage failed. Message:
+[Headers: {JiacTNGSenderAddress=>msgbox:df@n-8ce731ecbb1d;JiacTNGProtocolID=>df:bye;JiacTNGGroupAddress=>df@dfgroup;UUID=>n-8ce731ecbb1d}, Payload: null, Sender: msgbox:df@n-8ce731ecbb1d]
+de.dailab.jiactng.agentcore.comm.CommunicationException: error while sending message
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:221)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: javax.jms.JMSException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1412)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	... 7 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:24,040 WARN [n-8ce731ecbb1d.a-8ce745886cd4.CommunicationBean.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-8ce731ecbb1dStandardJMSBroker#3) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-07-07 12:27:24,043 WARN [n-8ce731ecbb1d.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doCleanup(DirectoryAgentNodeBean.java:311)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:1011)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-8ce731ecbb1dStandardJMSBroker#1) stopped.
 	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
 	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
 	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)

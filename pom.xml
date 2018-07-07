@@ -27,6 +27,38 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>generate start scripts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+						<configuration>
+							<repositoryLayout>flat</repositoryLayout>
+							<programs>
+								<program>
+									<mainClass>de.dailab.jiactng.aot.auction.StartGateway</mainClass>
+									<name>Start_Gateway</name>
+								</program>
+								<program>
+									<mainClass>de.dailab.jiactng.aot.auction.StartAuctioneer</mainClass>
+									<name>Start_Auctioneer</name>
+								</program>
+								<program>
+									<mainClass>de.dailab.jiactng.aot.auction.StartBidder</mainClass>
+									<name>Start_Bidder</name>
+								</program>
+							</programs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
