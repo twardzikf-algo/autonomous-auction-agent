@@ -516,7 +516,7 @@ public class BidderBean extends AbstractAgentBean {
         }
 
         public void remove() {
-            items.remove(0);
+           if(!items.isEmpty()) items.remove(0);
         }
 
         public Resource get() {
