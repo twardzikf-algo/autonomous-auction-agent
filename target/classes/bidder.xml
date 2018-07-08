@@ -15,7 +15,7 @@
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
 			<list>
-				<ref bean="BidderAgent" />
+                <ref bean="BidderAgent" />
                 <ref bean="BidderAgent1" />
                 <ref bean="BidderAgent2" />
 			</list>
