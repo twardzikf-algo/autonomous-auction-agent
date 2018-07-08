@@ -5,6 +5,7 @@ import de.dailab.jiactng.aot.auction.onto.Wallet;
 import org.chocosolver.solver.Model;
 import org.chocosolver.solver.Solution;
 import org.chocosolver.solver.Solver;
+import org.chocosolver.solver.exception.ContradictionException;
 import org.chocosolver.solver.variables.IntVar;
 
 import java.util.ArrayList;
@@ -12,10 +13,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static de.dailab.jiactng.aot.auction.onto.Resource.*;
-import static de.dailab.jiactng.aot.auction.onto.Resource.Q;
-import static de.dailab.jiactng.aot.auction.onto.Resource.Z;
 
 /******************************
  * BRAIN:
@@ -39,6 +39,7 @@ public class Brain {
     /* variable attributes - updated at the end of each call */
     private OpenStack open;
     private ClosedStack closed;
+    int[] sellCalls;
 
     public Brain(String bidderId, Wallet wallet, List<Resource> stack) {
         this.bidderId = bidderId;
@@ -46,6 +47,7 @@ public class Brain {
         this.initial = new OpenStack(stack);
         this.open = new OpenStack(stack);
         this.closed = new ClosedStack();
+        this.sellCalls = new int[12];
     }
 
     public void newCall(Integer callId, Resource resource, Integer minOffer) {
@@ -205,108 +207,116 @@ public class Brain {
         return 0;
     }
 
-    public int[] findBestPrices(int money, ArrayList<Integer> openitems) {
+    public int[] findBestPrices(int money, int[] openitems, int[] curRes) {
         Model model = new Model("Find good prices");
-        // create array of goods
-        ArrayList<IntVar> num_goods = new ArrayList<>(Arrays.asList(model.intVarArray("num", 7, 0, 1000, true)));
+        ArrayList<IntVar> num_goods = new ArrayList<>(Arrays.asList(model.intVarArray("num_goods", 12, -1000, 1000, true)));
+        ArrayList<IntVar> use_goods = new ArrayList<>(Arrays.asList(model.intVarArray("use_goods", 7, -1000, 1000000, true)));
 
-        // create array of squared goods
-        ArrayList<IntVar> num_goods_squared = new ArrayList<>(Arrays.asList(model.intVarArray("num_squared", 7, 0, 1000000, true)));
-        for (int i = 0; i < num_goods.size(); i++) {
-            model.times(num_goods.get(i), num_goods.get(i), num_goods_squared.get(i)).post();
-        }
-        num_goods_squared.add(num_goods.get(0));
-        num_goods_squared.add(num_goods.get(2));
-        System.out.println(num_goods_squared.size());
+        // good 1: u1 = 4*n1 + 50
+        IntVar temp1 = model.intVar("temp1",0, 1000);
+        model.times(num_goods.get(0), 4, temp1).post();
+        model.arithm(use_goods.get(0), "=", temp1, "+", 50).post();
 
-        //add constant to good array
-        num_goods.add(model.intVar("const", 40));
+        // good 2: u2 = fib(n2)
+        model.arithm(use_goods.get(1), "=", num_goods.get(1), "*", (fib(curRes[1]+openitems[1])-fib(curRes[1]))/(openitems[1]+1)).post();
+
+        // good 3:
+        IntVar temp2 = model.intVar("temp2",0, 1000);
+        model.times(num_goods.get(2), 5, temp2).post();
+        model.arithm(use_goods.get(2), "=", temp2, "-", 10).post();
+
+        // good 4, 5:
+        IntVar temp3 = model.intVar("temp3",0, 1000);
+        model.min(temp3, num_goods.get(3), num_goods.get(4)).post();
+        model.arithm(use_goods.get(3), "=", temp3, "*", 40).post();
+
+        // good 6, 7:
+        IntVar temp4 = model.intVar("temp4",0, 1000);
+        model.min(temp4, num_goods.get(5), num_goods.get(6)).post();
+        model.arithm(use_goods.get(4), "=", temp4, "*", 20).post();
+
+        // good 8,9,10,11
+        IntVar temp5 = model.intVar("temp5",0, 1000);
+        model.min(temp5, new IntVar[]{num_goods.get(7), num_goods.get(8), num_goods.get(9), num_goods.get(10)}).post();
+        model.arithm(use_goods.get(5), "=", temp5, "*", 80).post();
+
+        // good 12
+        model.arithm(use_goods.get(6), "=", num_goods.get(11), "*", 4).post();
+
 
         //create profit variable
         IntVar profit = model.intVar("Profit", 0, 1000000);
-        IntVar cost = model.intVar("cost", 0, 1000);
+        IntVar cost = model.intVar("cost", 0, 1000000);
 
-        IntVar[] num_goods_array = new IntVar[num_goods.size()];
-        IntVar[] num_goods_array_squared = new IntVar[num_goods_squared.size()];
-        assert (num_goods.size() == openitems.size());
-        // add constraint to buy all available ressources at most
+        IntVar[] use_goods_array = new IntVar[use_goods.size()];
+        IntVar[] num_goods_array = new IntVar[use_goods.size()];
+
+        // add constraint to buy all available resources at most
         for (int i = 0; i < num_goods.size(); i++) {
-            model.arithm(num_goods.get(i), "<=", openitems.get(i)).post();
+            model.arithm(num_goods.get(i), "<=", openitems[i] + curRes[i]).post();
         }
 
+    //    // add constraint to buy all available resources at most
+    //    for (int i = 0; i < num_goods.size(); i++) {
+    //        model.arithm(num_goods.get(i), ">=", curRes[i]).post();
+    //    }
+
         // add constraint to maximize profi and constrain it to spend money at most
-        model.scalar(num_goods.toArray(num_goods_array), new int[]{4, 100, 5, 40, 20, 80, 4, 1}, "=", profit).post();
-        model.scalar(num_goods_squared.toArray(num_goods_array_squared), new int[]{4, 100, 5, 80, 40, 320, 4, 50, -10}, "=", cost).post();
+        model.scalar(use_goods.toArray(use_goods_array), new int[]{1, 1, 1, 1, 1, 1, 1}, "=", profit).post();
+        model.scalar(num_goods.toArray(num_goods_array), new int[]{(curRes[0]==0)?50:4, fib(curRes[1]+openitems[1])-fib(curRes[1]), 5, 20, 20, 10, 10, 20, 20, 20, 20, 4}, "=", cost).post();
         model.arithm(cost, "<=", money).post();
-        //model.setObjective(Model.MAXIMIZE, profit);
 
         Solver solver = model.getSolver();
+        model.setObjective(Model.MAXIMIZE, profit);
+        try {
+            solver.propagate();
+        } catch (ContradictionException e) {
+            e.printStackTrace();
+        }
         Solution best = solver.findOptimalSolution(profit, true);
 
-        return num_goods.stream().mapToInt(var -> best.getIntVal(var)).toArray();
+        int[] optimNum = num_goods.stream().mapToInt(var -> best.getIntVal(var)).toArray();
+        return IntStream.range(0,12).map(i -> optimNum[i]-curRes[i]).toArray();
     }
 
     private Integer optimizedProfit() { // IN PROGRESS , SEMI FUNCTIONAL BUT NOT VERY EFFECTIVE
         ArrayList<Integer> openStackCount = new ArrayList<>();
-        Resource[] allResources = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
-        for (int j = 0; j < allResources.length; j++) {
-            int i = 0;
-            switch (allResources[j]) {
-                case C: //DONE
-                    i += open.countByResource(C);
-                    break;
-                case D:
-                    i += open.countByResource(D);
-                    break;
-                case E: //DONE
-                    i += open.countByResource(E);
-                    break;
-                case J:
-                    i += open.countByResource(J);
-                case K:
-                    i += open.countByResource(K);
-                    break;
-                case M:
-                    i += open.countByResource(M);
-                case N: //DONE
-                    i += open.countByResource(N);
-                    break;
-                case W:
-                    i += open.countByResource(W);
-                case X:
-                    i += open.countByResource(X);
-                case Y:
-                    i += open.countByResource(Y);
-                case Z:
-                    i += open.countByResource(Z);
-                    break;
-                case Q:
-                    i += open.countByResource(Q);
-                    break;
-            }
-            openStackCount.add(i);
-        }
-        int[] best = findBestPrices(wallet.getCredits(),openStackCount);
+        int[] resCount = Arrays.stream(new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q}).mapToInt(res -> open.countByResource(res)).toArray();
+        int[] currResCount = Arrays.stream(new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q}).mapToInt(res -> wallet.get(res)).toArray();
+        int[] best = findBestPrices(wallet.getCredits(),resCount, currResCount);
         switch (resource) {
             case C: //DONE
-                return 4*best[0]+ 50;
+                return (best[0] > 0)?4:54;
             case D:
-                return fib(best[1]);
+                return (best[1] > 0)?fib(wallet.get(D)+1)-fib(wallet.get(D)):0;
             case E: //DONE
-                return Math.max(5*best[2]-10, 0);
+                return (best[2]> 0)?5:0;
             case J:
+                sellCalls[3] = (currResCount[3] > 0 && best[3] < 0)?20:0;
+                return (best[3]> 0)?20:0;
             case K:
-                return 40*best[3];
+                sellCalls[4] = (currResCount[4] > 0 && best[4] < 0)?20:0;
+                return (best[4]> 0)?20:0;
             case M:
+                sellCalls[5] = (currResCount[5] > 0 && best[5] < 0)?10:0;
+                return (best[5]> 0)?10:0;
             case N:
-                return 20*best[4];
+                sellCalls[6] = (currResCount[6] > 0 && best[6] < 0)?10:0;
+                return (best[6]> 0)?10:0;
             case W:
+                sellCalls[7] = (currResCount[7] > 0 && best[7] < 0)?10:0;
+                return (best[7]> 0)?20:0;
             case X:
+                sellCalls[8] = (currResCount[8] > 0 && best[8] < 0)?10:0;
+                return (best[8]> 0)?20:0;
             case Y:
+                sellCalls[9] = (currResCount[9] > 0 && best[9] < 0)?10:0;
+                return (best[9]> 0)?20:0;
             case Z:
-                return 80*best[5];
-            case Q: //TODO
-                return 4*best[6];
+                sellCalls[10] = (currResCount[10] > 0 && best[10] < 0)?10:0;
+                return (best[10]> 0)?20:0;
+            case Q:
+                return (best[11]> 0)?4:0;
             default:
                 return 0;
         }

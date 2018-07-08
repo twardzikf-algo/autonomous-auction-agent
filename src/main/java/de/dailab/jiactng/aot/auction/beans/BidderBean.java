@@ -6,14 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.HashMap;
+import java.util.stream.IntStream;
 
 import de.dailab.jiactng.agentcore.AbstractAgentBean;
 import de.dailab.jiactng.agentcore.comm.CommunicationAddressFactory;
 import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.IGroupAddress;
 import de.dailab.jiactng.aot.auction.onto.*;
-import org.chocosolver.solver.*;
-import org.chocosolver.solver.variables.IntVar;
 import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
@@ -24,6 +23,8 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.IActionDescription;
 
 import static de.dailab.jiactng.aot.auction.onto.Resource.*;
+import static de.dailab.jiactng.aot.auction.onto.Resource.Q;
+import static de.dailab.jiactng.aot.auction.onto.Resource.Z;
 
 
 /******************* PRODUCT BACKLOG *************************
@@ -152,6 +153,12 @@ public class BidderBean extends AbstractAgentBean {
         int offer = brain.bid();
         brain.addClosed(payload.getResource(), offer);
         send(new Bid(bidderId, payload.getCallId(), offer), auctioneer);
+        Resource[] reses = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
+        for (int i = 0; i < 12; i++) {
+            if (brain.sellCalls[i] > 0) {
+                offerResale(reses[i], brain.sellCalls[i]);
+            }
+        }
     }
 
     private void handleInformBuy(JiacMessage message) {
