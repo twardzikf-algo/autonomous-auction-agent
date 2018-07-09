@@ -93,7 +93,7 @@ public class Brain {
             case "20_maxProfit": offer = maxProfit();
             case "20_maxEnd": offer = maxEnd();
             case "20_optimProfit": offer = optimizedProfit();
-            default: offer = uniformDistribution();
+            default: offer = optimizedProfit();
         }
         return (offer <= wallet.getCredits()) ? offer : minOffer;
     }

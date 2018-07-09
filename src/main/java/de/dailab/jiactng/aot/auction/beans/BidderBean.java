@@ -165,13 +165,6 @@ public class BidderBean extends AbstractAgentBean {
             brain.updateWallet(-payload.getPrice());
             brain.updateWallet(payload.getResource(), 1);
         }
-        Resource[] reses = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
-        for (int i = 0; i < 12; i++) {
-            if (brain.sellCalls[i] > 0) {
-                log.info("Ziel:" + brain.sellCalls.toString());
-                offerResale(reses[i], brain.sellCalls[i]);
-            }
-        }
     }
 
     private void handleInformSell(JiacMessage message) {
@@ -194,7 +187,7 @@ public class BidderBean extends AbstractAgentBean {
     /******************************
      * HANDLER FOR SENDING AN OFFER
      ******************************/
-    private void offerResale(Resource resource, Integer price) {
+    public void offerResale(Resource resource, Integer price) {
         Offer offer = new Offer(bidderId, resource, price);
         log.info(offer.toString());
         send(offer, auctioneer);
