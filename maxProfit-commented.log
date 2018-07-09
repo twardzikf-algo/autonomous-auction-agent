@@ -403,7 +403,7 @@ Initiated multicast sender on port 9999 with group 226.6.6.7 and interval 7500
 2018-07-08 10:08:54,664 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=980, resources={D=1, K=5}, value=1)
 2018-07-08 10:08:57,663 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - CallForBids(69, D, 0)
 2018-07-08 10:08:57,664 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=980, resources={D=1, K=5}, value=1)
-2018-07-08 10:08:59,378 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - InformBuy(WON, 69, D, 21)
+2018-07-08 10:08:59,378 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - InformBuy(WON, 69, D, 21)	
 2018-07-08 10:08:59,379 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=959, resources={D=2, K=5}, value=1)
 2018-07-08 10:09:01,658 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - CallForBids(70, N, 0)
 2018-07-08 10:09:01,659 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=959, resources={D=2, K=5}, value=1)
@@ -542,6 +542,9 @@ Initiated multicast sender on port 9999 with group 226.6.6.7 and interval 7500
 2018-07-08 10:11:04,795 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - CallForBids(100, Q, 0)
 2018-07-08 10:11:04,795 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=857, resources={D=3, K=5, N=1, E=2, Y=1}, value=2)
 2018-07-08 10:11:06,880 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - InformBuy(LOST, 100, Q, 44)
+
+
+# We only got D ressources with a value for our wallet. Our agent failed to buy some complementary-ressources
 2018-07-08 10:11:06,881 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 110] - Wallet(bidderId=20_maxPofit, credits=857, resources={D=3, K=5, N=1, E=2, Y=1}, value=2)
 2018-07-08 10:11:08,852 INFO [n-733943b47626.a-73392d42e387.BidderBean notify 101] - EndAuction(Gruppe06, Wallet(bidderId=Gruppe06, credits=404, resources={M=1, Z=2, Q=3, K=2, X=3, E=4, N=2, C=4, W=3, Y=2, J=2}, value=348))
 2018-07-08 10:11:08,853 INFO [n-733943b47626.a-73392d42e387.BidderBean handleEndAuction 178] - I LOST THE AUCTION!!!!!
