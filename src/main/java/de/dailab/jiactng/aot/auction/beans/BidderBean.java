@@ -150,14 +150,10 @@ public class BidderBean extends AbstractAgentBean {
     private void handleCallForBids(JiacMessage message) {
         CallForBids payload = ((CallForBids) message.getPayload());
         brain.newCall(payload.getCallId(), payload.getResource(), payload.getMinOffer());
-        int offer = brain.bid();
-        brain.addClosed(payload.getResource(), offer);
-        send(new Bid(bidderId, payload.getCallId(), offer), auctioneer);
-        Resource[] reses = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
-        for (int i = 0; i < 12; i++) {
-            if (brain.sellCalls[i] > 0) {
-                offerResale(reses[i], brain.sellCalls[i]);
-            }
+        if (message.getSender().getName() != this.bidderId) {
+            int offer = brain.bid();
+            brain.addClosed(payload.getResource(), offer);
+            send(new Bid(bidderId, payload.getCallId(), offer), auctioneer);
         }
     }
 
@@ -168,6 +164,13 @@ public class BidderBean extends AbstractAgentBean {
         if (payload.getType() == InformBuy.BuyType.WON) {
             brain.updateWallet(-payload.getPrice());
             brain.updateWallet(payload.getResource(), 1);
+        }
+        Resource[] reses = new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q};
+        for (int i = 0; i < 12; i++) {
+            if (brain.sellCalls[i] > 0) {
+                log.info("Ziel:" + brain.sellCalls.toString());
+                offerResale(reses[i], brain.sellCalls[i]);
+            }
         }
     }
 

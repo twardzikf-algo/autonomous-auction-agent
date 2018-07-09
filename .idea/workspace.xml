@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="392f362d-62d2-4400-9b8d-ea0ffd8a7041" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jiactng.log" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jiactng.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiactng.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jiactng.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/jiactng.log.3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bidder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bidder.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bidder.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bidder.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$MessageObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$MessageObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/auctioneer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/auctioneer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/auctioneer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/auctioneer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,7 +26,7 @@
       <file leaf-file-name="ClosedStack.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/ClosedStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
+            <state relative-caret-position="615">
               <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="auctioneer.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+            <state relative-caret-position="525">
+              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -47,17 +47,17 @@
       <file leaf-file-name="tester.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/tester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="83" column="5" selection-start-line="17" selection-start-column="4" selection-end-line="83" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="15" column="110" selection-start-line="15" selection-start-column="110" selection-end-line="15" selection-end-column="110" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BidderBean.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BidderBean.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="158" column="58" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
+            <state relative-caret-position="150">
+              <caret line="170" column="52" lean-forward="true" selection-start-line="170" selection-start-column="52" selection-end-line="170" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bidder.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bidder.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="-210">
               <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
             </state>
           </provider>
@@ -86,8 +86,8 @@
       <file leaf-file-name="Brain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
-              <caret line="288" column="41" selection-start-line="288" selection-start-column="41" selection-end-line="288" selection-end-column="41" />
+            <state relative-caret-position="309">
+              <caret line="323" column="47" selection-start-line="323" selection-start-column="47" selection-end-line="323" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,11 +124,11 @@
         <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/optimProfitBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/maxProfitBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/maxEndBot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/tester.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" />
         <option value="$PROJECT_DIR$/src/main/resources/auctioneer.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java" />
         <option value="$PROJECT_DIR$/src/main/resources/bidder.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/tester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java" />
       </list>
     </option>
   </component>
@@ -160,8 +160,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,7 +265,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,121 +279,6 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/jiactng.log</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/de/dailab/jiactng/aot/auction/beans/BidderBean$OpenStack.class</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/jiactng.log.1</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/samstag-13-32-output.txt</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -406,7 +291,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.StartAuctioneer">
+  <component name="RunManager" selected="Application.StartBidder">
     <configuration name="StartAuctioneer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.dailab.jiactng.aot.auction.StartAuctioneer" />
       <module name="jiac-aot-ss18" />
@@ -501,9 +386,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartBidder" />
-        <item itemvalue="Application.StartAuctioneer" />
-        <item itemvalue="Application.StartGateway" />
         <item itemvalue="Application.tester" />
+        <item itemvalue="Application.StartGateway" />
+        <item itemvalue="Application.StartAuctioneer" />
       </list>
     </recent_temporary>
   </component>
@@ -522,7 +407,8 @@
       <workItem from="1530373822725" duration="24215000" />
       <workItem from="1530615784093" duration="20233000" />
       <workItem from="1530958567821" duration="3415000" />
-      <workItem from="1530964748569" duration="21349000" />
+      <workItem from="1530964748569" duration="35280000" />
+      <workItem from="1531138736819" duration="4506000" />
     </task>
     <task id="LOCAL-00001" summary="Zerteilt und aufgelockert">
       <created>1530968449962</created>
@@ -531,14 +417,36 @@
       <option name="project" value="LOCAL" />
       <updated>1530968449962</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added resell to optimProfitBot and fixed errors">
+      <created>1531044076818</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531044076818</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added resell to optimProfitBot and fixed errors">
+      <created>1531044109198</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1531044109198</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added resell to optimProfitBot and fixed errors">
+      <created>1531044138368</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1531044138369</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70804000" />
+    <option name="totallyTimeSpent" value="89241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -557,19 +465,19 @@
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25310308" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Learn" />
+      <window_info id="Learn" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39972898" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +488,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Zerteilt und aufgelockert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zerteilt und aufgelockert" />
+    <MESSAGE value="Added resell to optimProfitBot and fixed errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added resell to optimProfitBot and fixed errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -884,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/tester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="83" column="5" selection-start-line="17" selection-start-column="4" selection-end-line="83" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jiactng.log.3">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1980" />
@@ -916,27 +818,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartBidder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/ClosedStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
+        <state relative-caret-position="615">
           <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="158" column="58" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -945,25 +830,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/auctioneer.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+        <state relative-caret-position="525">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/StartBidder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/tester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="15" column="110" selection-start-line="15" selection-start-column="110" selection-end-line="15" selection-end-column="110" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/Brain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="288" column="41" selection-start-line="288" selection-start-column="41" selection-end-line="288" selection-end-column="41" />
+        <state relative-caret-position="309">
+          <caret line="323" column="47" selection-start-line="323" selection-start-column="47" selection-end-line="323" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/bidder.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dailab/jiactng/aot/auction/beans/BidderBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        <state relative-caret-position="150">
+          <caret line="170" column="52" lean-forward="true" selection-start-line="170" selection-start-column="52" selection-end-line="170" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

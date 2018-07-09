@@ -209,7 +209,7 @@ public class Brain {
 
     public int[] findBestPrices(int money, int[] openitems, int[] curRes) {
         Model model = new Model("Find good prices");
-        ArrayList<IntVar> num_goods = new ArrayList<>(Arrays.asList(model.intVarArray("num_goods", 12, -1000, 1000, true)));
+        ArrayList<IntVar> num_goods = new ArrayList<>(Arrays.asList(model.intVarArray("num_goods", 12, 0, 1000, true)));
         ArrayList<IntVar> use_goods = new ArrayList<>(Arrays.asList(model.intVarArray("use_goods", 7, -1000, 1000000, true)));
 
         // good 1: u1 = 4*n1 + 50
@@ -284,42 +284,46 @@ public class Brain {
         int[] resCount = Arrays.stream(new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q}).mapToInt(res -> open.countByResource(res)).toArray();
         int[] currResCount = Arrays.stream(new Resource[]{C, D, E, J, K, M, N, W, X, Y, Z, Q}).mapToInt(res -> wallet.get(res)).toArray();
         int[] best = findBestPrices(wallet.getCredits(),resCount, currResCount);
+        int price = 0;
         switch (resource) {
             case C: //DONE
-                return (best[0] > 0)?4:54;
+                sellCalls[0] = 0;
+                price = (best[0] > 0)?(currResCount[0]==0)?54:4*best[0]:0;
             case D:
-                return (best[1] > 0)?fib(wallet.get(D)+1)-fib(wallet.get(D)):0;
+                sellCalls[1] = 0;
+                price = (best[1] > 0)?fib(wallet.get(D)+1)-fib(wallet.get(D))*best[1]:0;
             case E: //DONE
-                return (best[2]> 0)?5:0;
+                sellCalls[2] = 0;
+                price = (best[2]> 0)?5*best[2]:0;
             case J:
                 sellCalls[3] = (currResCount[3] > 0 && best[3] < 0)?20:0;
-                return (best[3]> 0)?20:0;
+                price = (best[3]> 0)?20*best[3]:0;
             case K:
                 sellCalls[4] = (currResCount[4] > 0 && best[4] < 0)?20:0;
-                return (best[4]> 0)?20:0;
+                price = (best[4]> 0)?20*best[4]:0;
             case M:
                 sellCalls[5] = (currResCount[5] > 0 && best[5] < 0)?10:0;
-                return (best[5]> 0)?10:0;
+                price = (best[5]> 0)?10*best[5]:0;
             case N:
                 sellCalls[6] = (currResCount[6] > 0 && best[6] < 0)?10:0;
-                return (best[6]> 0)?10:0;
+                price = (best[6]> 0)?10*best[6]:0;
             case W:
                 sellCalls[7] = (currResCount[7] > 0 && best[7] < 0)?10:0;
-                return (best[7]> 0)?20:0;
+                price = (best[7]> 0)?20*best[7]:0;
             case X:
                 sellCalls[8] = (currResCount[8] > 0 && best[8] < 0)?10:0;
-                return (best[8]> 0)?20:0;
+                price = (best[8]> 0)?20*best[8]:0;
             case Y:
                 sellCalls[9] = (currResCount[9] > 0 && best[9] < 0)?10:0;
-                return (best[9]> 0)?20:0;
+                price = (best[9]> 0)?20*best[9]:0;
             case Z:
                 sellCalls[10] = (currResCount[10] > 0 && best[10] < 0)?10:0;
-                return (best[10]> 0)?20:0;
+                price = (best[10]> 0)?20*best[10]:0;
             case Q:
-                return (best[11]> 0)?4:0;
-            default:
-                return 0;
+                sellCalls[11] = 0;
+                price = (best[11]> 0)?4*best[11]:0;
         }
+        return Math.min(wallet.getCredits(), (int)(price * Math.exp(closed.countAll())));
     }
 
     /************************************
