@@ -11,13 +11,12 @@
 
 	<!-- for testing, use NodeWithJMX, for final competition, use AotGatewayNode -->
 <!-- 	<bean name="BidderNode" parent="AotGatewayNode" scope="singleton"> -->
-	<bean name="BidderNode" parent="AotGatewayNode" scope="singleton">
+	<bean name="BidderNode" parent="NodeWithJMX" scope="singleton">
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
 			<list>
                 <ref bean="BidderAgent" />
                 <ref bean="BidderAgent1" />
-                <ref bean="BidderAgent2" />
 			</list>
 		</property>
 	</bean>
@@ -43,20 +42,6 @@
                     <property name="logLevel" value="INFO" />
 
                     <property name="bidderId" value="20_maxPofit" />
-                    <property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
-                    <!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
-                </bean>
-            </list>
-        </property>
-    </bean>
-
-    <bean name="BidderAgent2" parent="SimpleAgent" scope="prototype">
-        <property name="agentBeans">
-            <list>
-                <bean name="BidderBean" class="de.dailab.jiactng.aot.auction.beans.maxEndBot" scope="prototype">
-                    <property name="logLevel" value="INFO" />
-
-                    <property name="bidderId" value="20_maxEnd" />
                     <property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
                     <!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
                 </bean>
